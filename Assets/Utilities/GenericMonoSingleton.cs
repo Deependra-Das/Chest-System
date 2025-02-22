@@ -4,14 +4,14 @@ namespace ChestSystem.Utilities
 {
     public class GenericMonoSingleton<T> : MonoBehaviour where T : GenericMonoSingleton<T>
     {
-        private static T instance;
-        public static T Instance { get { return instance; } }
+        private static T _instance;
+        public static T Instance { get { return _instance; } }
 
         protected virtual void Awake()
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                instance = (T)this;
+                _instance = (T)this;
             }
             else
             {
