@@ -2,11 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ChestSystem.Utilities;
+using ChestSystem.Chest;
 
 namespace ChestSystem.Main
 {
     public class GameService : GenericMonoSingleton<GameService>
     {
+        private ChestService _chestService;
+
+        [Header("Prefabs")]
+        [SerializeField] private ChestView _chestPrefab;
+
+        [Header("Scriptable Objects")]
+        [SerializeField] private List<ChestScriptableObject> _chestSO_List;
+
+        [Header("Transform")]
+        [SerializeField] private Transform _contentTransform;
         protected override void Awake()
         {
             base.Awake();
@@ -14,7 +25,7 @@ namespace ChestSystem.Main
 
         private void Start()
         {
-            Debug.Log("GameService Setup");
+            _chestService = new ChestService(_chestSO_List,_chestPrefab, _contentTransform);
         }
 
     }
