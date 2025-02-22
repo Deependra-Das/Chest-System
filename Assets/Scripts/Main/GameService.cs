@@ -25,9 +25,11 @@ namespace ChestSystem.Main
 
         private void Start()
         {
-            _chestService = new ChestService(_chestSO_List,_chestPrefab, _contentTransform);
+            _chestService = new ChestService(_chestSO_List,_chestPrefab);
+            _chestService.GenerateChest();
         }
 
+        public Transform GetContentTransform { get { return _contentTransform; } private set { } }
     }
 
 }

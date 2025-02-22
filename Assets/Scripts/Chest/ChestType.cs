@@ -5,6 +5,6 @@ namespace ChestSystem.Chest
         Common,
         Rare,
         Epic,
-        Legendary,
+        Legendary
     }
 }

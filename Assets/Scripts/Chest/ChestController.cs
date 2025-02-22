@@ -1,3 +1,4 @@
+using ChestSystem.Main;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,16 @@ namespace ChestSystem.Chest
         private ChestModel _chestModel;
         private ChestView _chestView;
 
-        public ChestController(ChestScriptableObject chestSO, ChestView chestPrefab, Transform contentTransform)
+        public ChestController(ChestScriptableObject chestSO, ChestView chestPrefab)
         {
             _chestModel = new ChestModel(chestSO);
-
-            _chestView = GameObject.Instantiate(chestPrefab, contentTransform);
+            _chestView = GameObject.Instantiate(chestPrefab, GameService.Instance.GetContentTransform);
             _chestView.SetController(this);
         }
+
+        public ChestModel GetChestModel { get { return _chestModel; } private set { } }
+        public ChestView GetChestView { get { return _chestView; } private set { } }
+
     }
 }
 

@@ -753,6 +753,9 @@ MonoBehaviour:
   _chestPrefab: {fileID: 624034796563659330, guid: 18d406595a9f9d741b555374ad9044ed, type: 3}
   _chestSO_List:
   - {fileID: 11400000, guid: 4c122df166149894a8d865c732590ba2, type: 2}
+  - {fileID: 11400000, guid: 84e03de5ebb6a224ba1b04706e1558d4, type: 2}
+  - {fileID: 11400000, guid: d5512b2e7bd567f43afbaefc39e8e8f9, type: 2}
+  - {fileID: 11400000, guid: 7dde97c96cc05e941ac61ef968a3262a, type: 2}
   _contentTransform: {fileID: 2103913754}
 --- !u!1 &292246063
 GameObject:

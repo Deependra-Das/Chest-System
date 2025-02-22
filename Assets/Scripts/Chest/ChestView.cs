@@ -9,19 +9,20 @@ namespace ChestSystem.Chest
 
         private ChestController _chestController;
 
-        private void Awake()
+        public void SetController(ChestController controller)
+        {
+            _chestController = controller;
+            SetListeners();
+        }
+
+        private void SetListeners()
         {
             _chestButton.onClick.AddListener(CheckClicked);
         }
 
-        public void SetController(ChestController controller)
-        {
-            _chestController = controller;
-        }
-
         private void CheckClicked()
         {
-            Debug.Log("Chest Clicked");
+            Debug.Log(_chestController.GetChestModel.ChestType.ToString());
         }
     }
 }
