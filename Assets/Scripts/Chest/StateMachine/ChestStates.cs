@@ -1,6 +1,6 @@
-namespace ChestSystem.StateMachine
+namespace ChestSystem.Chest
 {
-    public enum States
+    public enum ChestStates
     {
         LOCKED,
         QUEUED,

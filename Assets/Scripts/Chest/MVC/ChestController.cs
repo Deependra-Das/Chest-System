@@ -9,7 +9,7 @@ namespace ChestSystem.Chest
     {
         private ChestModel _chestModel;
         private ChestView _chestView;
-
+        private ChestStateMachine _chestStateMachine;
         public ChestController(ChestScriptableObject chestSO, ChestView chestPrefab)
         {
             _chestModel = new ChestModel(chestSO);
