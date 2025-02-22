@@ -22,7 +22,8 @@ namespace ChestSystem.Chest
         {
             ChestType randomChest = (ChestType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(ChestType)).Length);
 
-            ChestController chest = FetchChest(randomChest);     
+            ChestController chest = FetchChest(randomChest);
+            chest.Configure();
         }
 
         private ChestController FetchChest(ChestType typeToFetch)
@@ -43,5 +44,7 @@ namespace ChestSystem.Chest
                     throw new Exception($"Failed to Create ChestController for: {typeToFetch}");
             }
         }
+
+        public void ReturnChestToPool(ChestController chestToReturn) => _chestPoolObj.ReturnItem(chestToReturn);
     }
 }

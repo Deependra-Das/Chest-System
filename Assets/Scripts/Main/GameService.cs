@@ -30,6 +30,8 @@ namespace ChestSystem.Main
         }
 
         public Transform GetContentTransform { get { return _contentTransform; } private set { } }
+
+        public ChestService GetChestService() => _chestService;
     }
 
 }

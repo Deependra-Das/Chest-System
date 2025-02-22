@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +38,17 @@ namespace ChestSystem.Chest
         {
             _chestController = controller;
             SetChestDataOnUI();
+            SetListeners();
+        }
+
+        private void SetListeners()
+        {
+            _chestButton.onClick.AddListener(CheckClicked);
+        }
+
+        private void CheckClicked()
+        {
+            _chestController.ChestOpened();
         }
 
         public void SetChestDataOnUI()
