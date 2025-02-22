@@ -15,8 +15,9 @@ MonoBehaviour:
   chestType: 1
   chestLockedImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   chestUnlockedImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  unlockDuration: 0
-  coinsMinDrop: 0
-  coinsMaxDrop: 0
-  gemsMinDrop: 0
-  gemsMaxDrop: 0
+  unlockDuration: 30
+  gemsCost: 10
+  coinsMinDrop: 300
+  coinsMaxDrop: 500
+  gemsMinDrop: 20
+  gemsMaxDrop: 40

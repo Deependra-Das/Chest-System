@@ -15,6 +15,7 @@ namespace ChestSystem.Chest
             _chestModel = new ChestModel(chestSO);
             _chestView = GameObject.Instantiate(chestPrefab, GameService.Instance.GetContentTransform);
             _chestView.SetController(this);
+            _chestView.SetChestDataOnUI();
         }
 
         public ChestModel GetChestModel { get { return _chestModel; } private set { } }

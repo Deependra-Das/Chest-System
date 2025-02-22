@@ -12,6 +12,7 @@ namespace ChestSystem.Chest
         public Sprite chestLockedImage;
         public Sprite chestUnlockedImage;
         public int unlockDuration;
+        public int gemsCost;
 
         [Header("Chest Drops")]
         public int coinsMinDrop;

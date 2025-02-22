@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 2076599046476115969}
   - component: {fileID: 7912749157930868892}
   m_Layer: 5
-  m_Name: StatusText
+  m_Name: QLockedStatusText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 624041895401198301}
   - component: {fileID: 4490671711283384370}
   m_Layer: 5
-  m_Name: TimeText
+  m_Name: DurationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 2839571185960104435}
   - component: {fileID: 3946414671514318038}
   m_Layer: 5
-  m_Name: StatusText
+  m_Name: OpenNowText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1330,7 +1330,7 @@ GameObject:
   - component: {fileID: 2275175608908462536}
   - component: {fileID: 5071029493446056408}
   m_Layer: 5
-  m_Name: StatusText
+  m_Name: LockedStatusText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1721,7 +1721,7 @@ GameObject:
   - component: {fileID: 4999768525973974739}
   - component: {fileID: 4759533824501221468}
   m_Layer: 5
-  m_Name: StatusText
+  m_Name: QueuedStatusText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2406,6 +2406,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chestButton: {fileID: 6195376677205039158}
+  _commonBG: {fileID: 0}
+  _rareBG: {fileID: 0}
+  _epicBG: {fileID: 0}
+  _legendaryBG: {fileID: 0}
+  _rarityImage: {fileID: 1041309324893837368}
+  _chestImage: {fileID: 8220337556481674501}
+  _lockedStateToggle: {fileID: 8758533782445003566}
+  _lockedDurationText: {fileID: 9118891561068380565}
+  _unlockingStateToggle: {fileID: 4609325499070972689}
+  _unlockingTimerText: {fileID: 3028207968660713005}
+  _unlockingClockImage: {fileID: 6551775619560678030}
+  _gemCostText: {fileID: 6254316133716088986}
+  _gemImage: {fileID: 3761050690952848327}
+  _queuedStateToggle: {fileID: 2784711284748853892}
+  _queuedDurationText: {fileID: 4490671711283384370}
 --- !u!1 &8294383339739681632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2494,7 +2509,7 @@ GameObject:
   - component: {fileID: 7882782893542145735}
   - component: {fileID: 9118891561068380565}
   m_Layer: 5
-  m_Name: TimeText
+  m_Name: DurationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
