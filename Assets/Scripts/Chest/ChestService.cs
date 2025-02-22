@@ -18,12 +18,12 @@ namespace ChestSystem.Chest
             _chestPoolObj = new ChestPool(chestPrefab);
         }
 
-        public void GenerateChest()
+        public void GenerateChest(Transform slotTransform)
         {
             ChestType randomChest = (ChestType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(ChestType)).Length);
 
             ChestController chest = FetchChest(randomChest);
-            chest.Configure();
+            chest.Configure(slotTransform);
         }
 
         private ChestController FetchChest(ChestType typeToFetch)
