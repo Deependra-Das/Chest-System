@@ -22,7 +22,14 @@ namespace ChestSystem.Chest
 
         public void OnChestButtonClick()
         {
-            _owner.ChangeState(ChestStates.QUEUED);
+            if(_owner.IsUnlockingSlotQueueEmpty())
+            {
+                _stateMachine.ChangeState(ChestStates.UNLOCKING);
+            }
+            else
+            {
+                _stateMachine.ChangeState(ChestStates.QUEUED);
+            }            
         }
 
         public void OnStateExit()

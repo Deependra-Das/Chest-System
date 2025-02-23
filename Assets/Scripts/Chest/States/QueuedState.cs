@@ -14,13 +14,13 @@ namespace ChestSystem.Chest
         public void OnStateEnter()
         {
             _owner.ToggleQueuedStateUI(true);
+            _owner.AddChestToUnlockingQueue();
         }
 
         public void Update() { }
 
         public void OnChestButtonClick()
         {
-            _owner.ChangeState(ChestStates.UNLOCKING);
         }
 
         public void OnStateExit()
