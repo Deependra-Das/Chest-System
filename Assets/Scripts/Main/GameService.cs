@@ -12,6 +12,7 @@ namespace ChestSystem.Main
     {
         private ChestService _chestService;
         private ChestSlotService _chestSlotService;
+        private UnlockingQueueService _unlockingQueueService;
 
         [SerializeField] private int _chestSlotCount;
 
@@ -41,6 +42,7 @@ namespace ChestSystem.Main
         {
             _chestService = new ChestService(_chestSO_List,_chestPrefab);
             _chestSlotService = new ChestSlotService(_chestSlotPrefab, _chestSlotCount);
+            _unlockingQueueService = new UnlockingQueueService(_chestSlotCount);
         }
 
         public Transform GetCanvasTransform { get { return _canvasTransform; } private set { } }
@@ -50,6 +52,8 @@ namespace ChestSystem.Main
         public ChestService GetChestService() => _chestService;
 
         public ChestSlotService GetChestSlotService() => _chestSlotService;
+
+        public UnlockingQueueService GetUnlockingQueueService() => _unlockingQueueService;
 
         public void GenerateChest()
         {

@@ -58,6 +58,11 @@ namespace ChestSystem.ChestSlot
         {
             _chestObj = null;
         }
+
+        public ChestController GetChestStoredInSlot()
+        {
+            return _chestObj;
+        }
     }
 
 }

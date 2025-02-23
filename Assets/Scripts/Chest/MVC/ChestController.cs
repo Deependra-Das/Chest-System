@@ -65,9 +65,9 @@ namespace ChestSystem.Chest
             GameService.Instance.GetChestService().ReturnChestToPool(this);
         }
 
-        public void LockChest()
+        public void ChangeChestState(ChestStates value)
         {
-            _chestStateMachine.ChangeState(ChestStates.LOCKED);
+            _chestStateMachine.ChangeState(value);
         }
 
         public void ToggleLockedStateUI(bool value)
@@ -89,18 +89,21 @@ namespace ChestSystem.Chest
 
         public void AddChestToUnlockingQueue()
         {
-            GameService.Instance.GetChestSlotService().EnqueueChestForUnlocking(_chestSlotController);
+            GameService.Instance.GetUnlockingQueueService().EnqueueChestForUnlocking(_chestSlotController);
         }
         public void RemoveChestFromUnlockingQueue()
         {
-            GameService.Instance.GetChestSlotService().DeqeueChestAfterUnlocking(_chestSlotController);
+            GameService.Instance.GetUnlockingQueueService().DeqeueChestAfterUnlocking();
         }
         public void ResetSlotAfterCollecting()
         {
             GameService.Instance.GetChestSlotService().ResetSlotAfterCollecting(_chestSlotController);
         }
-        
 
+        public bool IsUnlockingSlotQueueEmpty()
+        {
+            return GameService.Instance.GetUnlockingQueueService().IsUnlockingSlotQueueEmpty();
+        }
     }
 }
 
