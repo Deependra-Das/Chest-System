@@ -25,6 +25,10 @@ namespace ChestSystem.ChestSlot
         {
             _emptySlotToggle.gameObject.SetActive(value);
         }
-  
+
+        public Transform GetSlotTransform()
+        {
+            return this.gameObject.transform;
+        }
     }
 }

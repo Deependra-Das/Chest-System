@@ -750,7 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9afbfc55dfed04ba1b7cfa867aac41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chestSlotCount: 8
+  _chestSlotCount: 4
   _chestPrefab: {fileID: 624034796563659330, guid: 18d406595a9f9d741b555374ad9044ed, type: 3}
   _chestSlotPrefab: {fileID: 576590977260066016, guid: 533f40e9f868caf47abb36cd48905f8d, type: 3}
   _chestSO_List:

@@ -1,3 +1,4 @@
+using ChestSystem.ChestSlot;
 using ChestSystem.Main;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace ChestSystem.Chest
         private ChestModel _chestModel;
         private ChestView _chestView;
         protected ChestStateMachine _chestStateMachine;
+        private ChestSlotController _chestSlotController;
 
         public ChestController(ChestScriptableObject chestSO, ChestView chestPrefab)
         {
@@ -22,9 +24,10 @@ namespace ChestSystem.Chest
             _chestView.SetChestDataOnUI();
         }
 
-        public void Configure(Transform parentTransform)
+        public void Configure(ChestSlotController chestSlotController)
         {
-            _chestView.gameObject.transform.SetParent(parentTransform);
+            _chestSlotController = chestSlotController;
+            _chestView.gameObject.transform.SetParent(_chestSlotController.GetSlotTransform());
             _chestView.gameObject.transform.localPosition = Vector3.zero;
             _chestView.gameObject.transform.localScale = new Vector3(1, 1, 1);
             _chestView.gameObject.SetActive(true);
@@ -57,6 +60,8 @@ namespace ChestSystem.Chest
         {
             _chestView.gameObject.SetActive(false);
             _chestView.gameObject.transform.SetParent(GameService.Instance.GetCanvasTransform);
+            _chestSlotController.SetSlotState(ChestSlotStates.UNOCCUPIED);
+            _chestSlotController = null;
             GameService.Instance.GetChestService().ReturnChestToPool(this);
         }
 

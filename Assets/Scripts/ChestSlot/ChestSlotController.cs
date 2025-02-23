@@ -20,7 +20,7 @@ namespace ChestSystem.ChestSlot
 
         public bool IsSlotAvailable()
         {
-            if(_chestSlotState==ChestSlotStates.OCCUPIED)
+            if(_chestSlotState==ChestSlotStates.UNOCCUPIED)
             {
                 return true;
             }
@@ -28,6 +28,16 @@ namespace ChestSystem.ChestSlot
             {
                 return false;
             }
+        }
+
+        public void SetSlotState(ChestSlotStates value)
+        {
+            _chestSlotState=value;
+        }
+
+        public Transform GetSlotTransform()
+        {
+            return _chestSlotView.GetSlotTransform();
         }
     }
 

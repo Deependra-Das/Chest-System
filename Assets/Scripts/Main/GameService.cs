@@ -51,7 +51,15 @@ namespace ChestSystem.Main
 
         public void GenerateChest()
         {
-            //_chestService.GenerateChest(_slotTransform);
+            ChestSlotController chestSlot = _chestSlotService.GetVacantSlot();
+
+            if (chestSlot!=null)
+            {
+                ChestController chest = _chestService.GenerateRandomChest();
+                chest.Configure(chestSlot);
+                chestSlot.SetSlotState(ChestSlotStates.OCCUPIED);
+            }
+
         }
     }
 
