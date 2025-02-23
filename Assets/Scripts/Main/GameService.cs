@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using ChestSystem.Utilities;
 using ChestSystem.Chest;
 using ChestSystem.ChestSlot;
+using ChestSystem.UI;
 
 namespace ChestSystem.Main
 {
@@ -16,9 +17,10 @@ namespace ChestSystem.Main
 
         [SerializeField] private int _chestSlotCount;
 
-        [Header("Prefabs")]
+        [Header("Views")]
         [SerializeField] private ChestView _chestPrefab;
         [SerializeField] private ChestSlotView _chestSlotPrefab;
+        [SerializeField] private UIView _uiView;
 
         [Header("Scriptable Objects")]
         [SerializeField] private List<ChestScriptableObject> _chestSO_List;
@@ -40,6 +42,7 @@ namespace ChestSystem.Main
 
         private void Start()
         {
+            _uiView.Initialize();
             _chestService = new ChestService(_chestSO_List,_chestPrefab);
             _chestSlotService = new ChestSlotService(_chestSlotPrefab, _chestSlotCount);
             _unlockingQueueService = new UnlockingQueueService(_chestSlotCount);
