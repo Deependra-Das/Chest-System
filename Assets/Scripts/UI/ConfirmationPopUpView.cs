@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class ConfirmationPopUpView : MonoBehaviour
+namespace ChestSystem.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ConfirmationPopUpView : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private TextMeshProUGUI _confirmationMessageText;
+        [SerializeField] private Button _confirmButton;
+        [SerializeField] private Button _cancelButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
     }
 }
