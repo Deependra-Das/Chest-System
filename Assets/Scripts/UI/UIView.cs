@@ -5,57 +5,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using ChestSystem.Chest;
+using ChestSystem.ChestSlot;
 
 namespace ChestSystem.UI
 {
     public class UIView : GenericMonoSingleton<UIView>
     {
-        [Header("Currency")]
-        [SerializeField] private Image _coinsOwnedImage;
-        [SerializeField] private Image _gemsOwnedImage;
-        [SerializeField] private TextMeshProUGUI _coinsOwnedText;
-        [SerializeField] private TextMeshProUGUI _gemsOwnedText;
-
-        [Header("Action Buttons")]
         [SerializeField] private Button _generateChestsButton;
         [SerializeField] private Button _UndoOptionButton;
+        [SerializeField] private Transform _slotContainerTransform;
 
-        [Header("Pop-Ups")]
-        [SerializeField] private GameObject _popUpContainer;
-        [SerializeField] private AcknowledgementPopUpView _acknowledgementPrefab;
-        [SerializeField] private ConfirmationPopUpView _confirmationPopUpPrefab;
-        [SerializeField] private NotificationPopUpView _notificationPopUpPrefab;
-
-        private AcknowledgementPopUpView _acknowledgementPopUpView;
-        private ConfirmationPopUpView _confirmationPopUpView;
-        private NotificationPopUpView _notificationPopUpView;
-
+        public Transform GetSlotContainerTransform { get { return _slotContainerTransform; } private set { } }
 
         public void Initialize()
         {
-            InitializePopUps();
-            _popUpContainer.SetActive(false);
-            ShowNotification();
+            SetListeners();
         }
-
-        private void InitializePopUps()
+        public void SetListeners()
         {
-            _acknowledgementPopUpView = GameObject.Instantiate(_acknowledgementPrefab, _popUpContainer.transform);
-            _confirmationPopUpView = GameObject.Instantiate(_confirmationPopUpPrefab, _popUpContainer.transform);
-            _notificationPopUpView = GameObject.Instantiate(_notificationPopUpPrefab, _popUpContainer.transform);
-
-            _acknowledgementPopUpView.gameObject.SetActive(false);
-            _confirmationPopUpView.gameObject.SetActive(false);
-            _notificationPopUpView.gameObject.SetActive(false);
-
-          
+            _generateChestsButton.onClick.AddListener(GenerateButtonClicked);
         }
-
-        public void ShowNotification()
+        public void GenerateButtonClicked()
         {
-            _popUpContainer.SetActive(true);
-            _acknowledgementPopUpView.SetShowAcknowledgementMessage("Testing");
-            _acknowledgementPopUpView.ShowAcknowledgementPopUp();
+            GameService.Instance.GenerateChest();
         }
 
     }

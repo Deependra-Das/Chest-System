@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using ChestSystem.Utilities;
 
 namespace ChestSystem.UI
 {
-    public class AcknowledgementPopUpView : MonoBehaviour
+    public class AcknowledgementPopUpView : GenericMonoSingleton<AcknowledgementPopUpView>
     {
+        [SerializeField] private GameObject _acknowledgementContainer;
         [SerializeField] private TextMeshProUGUI _acknowledgementMessageText;
         [SerializeField] private Button _acknowledgementButton;
 
@@ -21,14 +23,13 @@ namespace ChestSystem.UI
 
         public void ShowAcknowledgementPopUp()
         {
-            gameObject.SetActive(true);
+            _acknowledgementContainer.SetActive(true);
         }
 
         private void HideAcknowledgementPopUp()
         {
             Debug.Log("Clicked");
-            gameObject.transform.parent?.gameObject.SetActive(false);
-            gameObject.SetActive(false);          
+            _acknowledgementContainer.SetActive(false);          
         }
     }
 
