@@ -20,7 +20,7 @@ namespace ChestSystem.Chest
 
         public void OnChestButtonClick()
         {
-            _owner.ChangeState(ChestStates.UNLOCKING);
+            _stateMachine.ChangeState(ChestStates.UNLOCKING);
         }
 
         public void OnStateExit()

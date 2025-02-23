@@ -49,6 +49,8 @@ namespace ChestSystem.Main
 
         public ChestService GetChestService() => _chestService;
 
+        public ChestSlotService GetChestSlotService() => _chestSlotService;
+
         public void GenerateChest()
         {
             ChestSlotController chestSlot = _chestSlotService.GetVacantSlot();
@@ -57,6 +59,7 @@ namespace ChestSystem.Main
             {
                 ChestController chest = _chestService.GenerateRandomChest();
                 chest.Configure(chestSlot);
+                chestSlot.AddChestToSlot(chest);
                 chestSlot.SetSlotState(ChestSlotStates.OCCUPIED);
             }
 

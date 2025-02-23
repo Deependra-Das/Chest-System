@@ -7,11 +7,12 @@ namespace ChestSystem.ChestSlot
     public class ChestSlotService
     {
         private List<ChestSlotController> _chestSlotList;
-        
+        private ChestSlotQueueController _chestSlotQueueObj;
         public ChestSlotService(ChestSlotView chestSlotPrefab, int slotCount)
         {
             _chestSlotList = new List<ChestSlotController>(slotCount);
             CreateChestSlots(chestSlotPrefab, slotCount);
+            _chestSlotQueueObj = new ChestSlotQueueController(slotCount);
         }
 
         public void CreateChestSlots(ChestSlotView chestSlotPrefab, int slotCount)
@@ -42,6 +43,27 @@ namespace ChestSystem.ChestSlot
                 }
             }
             return null;
+        }
+
+        public void EnqueueChestForUnlocking(ChestSlotController chestSlot)
+        {
+            _chestSlotQueueObj.EnqueueChestForUnlocking(chestSlot);
+        }
+
+        public void ProcessNextChestSlot()
+        {
+
+        }
+        public void DeqeueChestAfterUnlocking(ChestSlotController chestSlot)
+        {
+            _chestSlotQueueObj.DeqeueChestForUnlocking();        
+        }
+
+        public void ResetSlotAfterCollecting(ChestSlotController chestSlot)
+        {
+            _chestSlotList.Remove(chestSlot);
+            _chestSlotList.Add(chestSlot);
+            chestSlot.GetSlotTransform().SetAsLastSibling();
         }
     }
 

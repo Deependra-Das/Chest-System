@@ -22,7 +22,7 @@ namespace ChestSystem.Chest
         {
             ChestType randomChest = (ChestType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(ChestType)).Length);
             ChestController chest = FetchChest(randomChest);
-            chest.ChangeState(ChestStates.LOCKED);
+            chest.LockChest();
             return chest;
         }
 

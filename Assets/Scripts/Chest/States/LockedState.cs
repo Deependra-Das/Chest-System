@@ -22,7 +22,7 @@ namespace ChestSystem.Chest
 
         public void OnChestButtonClick()
         {
-            _owner.ChangeState(ChestStates.QUEUED);
+            _stateMachine.ChangeState(ChestStates.QUEUED);
         }
 
         public void OnStateExit()

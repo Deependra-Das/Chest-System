@@ -1,3 +1,6 @@
+using ChestSystem.ChestSlot;
+using ChestSystem.Main;
+
 namespace ChestSystem.Chest
 {
     public class UnlockedState : IChestState
@@ -14,13 +17,14 @@ namespace ChestSystem.Chest
         public void OnStateEnter()
         {
             _owner.ToggleUnlockedStateUI(true);
+            _owner.RemoveChestFromUnlockingQueue();
         }
 
         public void Update() { }
 
         public void OnChestButtonClick()
         {
-            _owner.ChangeState(ChestStates.COLLECTED);
+            _stateMachine.ChangeState(ChestStates.COLLECTED);
         }
 
         public void OnStateExit()

@@ -1,5 +1,7 @@
 using static UnityEditor.VersionControl.Asset;
 using UnityEngine;
+using ChestSystem.Main;
+using ChestSystem.ChestSlot;
 
 namespace ChestSystem.Chest
 {
@@ -19,6 +21,7 @@ namespace ChestSystem.Chest
         {
             ResetTimer();
             _owner.ToggleUnlockingStateUI(true);
+            _owner.AddChestToUnlockingQueue();
         }
 
         public void Update()
@@ -34,7 +37,7 @@ namespace ChestSystem.Chest
 
         public void OnChestButtonClick()
         {
-            _owner.ChangeState(ChestStates.UNLOCKED);
+            _stateMachine.ChangeState(ChestStates.UNLOCKED);
         }
 
         public void OnStateExit()

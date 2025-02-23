@@ -13,6 +13,7 @@ namespace ChestSystem.Chest
 
         public void OnStateEnter()
         {
+            _owner.ResetSlotAfterCollecting();
             _owner.ChestCollected();
         }
         public void Update() { }
