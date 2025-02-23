@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -78,6 +77,13 @@ namespace ChestSystem.Chest
             _queuedStateToggle.gameObject.SetActive(false);
             _unlockedStateToggle.gameObject.SetActive(false);
         }
+
+        private void Update() => _chestController?.UpdateChest();
+
+        public void UpdateUnlockingTimerText(float currentTimeLeft)
+        {
+            _unlockingTimerText.text = FormatTime((int)currentTimeLeft);
+        }  
 
         public void ToggleLockedStateUI(bool value)
         {

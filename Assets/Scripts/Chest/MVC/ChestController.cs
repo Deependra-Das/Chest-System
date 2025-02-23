@@ -2,6 +2,7 @@ using ChestSystem.Main;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using static UnityEditor.VersionControl.Asset;
 
@@ -39,6 +40,19 @@ namespace ChestSystem.Chest
             _chestStateMachine.OnChestButtonClick();
         }
 
+        public void UpdateChest()
+        {
+            if (_chestStateMachine.GetCurrentState() != ChestStates.UNLOCKING)
+                return;
+
+            _chestStateMachine.Update();
+        }
+
+        public void UpdateUnlockingTimerText(float currentTimeLeft)
+        {
+            _chestView.UpdateUnlockingTimerText(currentTimeLeft);
+        }
+
         public void ChestCollected()
         {
             _chestView.gameObject.SetActive(false);
@@ -50,6 +64,7 @@ namespace ChestSystem.Chest
         {
             _chestStateMachine.ChangeState(newState);
         }
+
         public void ToggleLockedStateUI(bool value)
         {
             _chestView.ToggleLockedStateUI(value);

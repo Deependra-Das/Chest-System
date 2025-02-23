@@ -32,6 +32,8 @@ namespace ChestSystem.Chest
             _currentState.OnChestButtonClick();
         }
 
+        public void Update() => _currentState?.Update();
+
         public void ChangeState(ChestStates newState) => ChangeState(_states[newState]);
 
         private void ChangeState(IChestState newState)

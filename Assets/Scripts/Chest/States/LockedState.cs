@@ -18,6 +18,8 @@ namespace ChestSystem.Chest
             _owner.ToggleLockedStateUI(true);
         }
 
+        public void Update() { }
+
         public void OnChestButtonClick()
         {
             _owner.ChangeState(ChestStates.QUEUED);

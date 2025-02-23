@@ -15,6 +15,7 @@ namespace ChestSystem.Chest
         {
             _owner.ChestCollected();
         }
+        public void Update() { }
 
         public void OnChestButtonClick() {}
 
