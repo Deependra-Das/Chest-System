@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.VersionControl.Asset;
 
@@ -19,11 +20,11 @@ namespace ChestSystem.Chest
 
         private void CreateStates()
         {
-            _states.Add(ChestStates.LOCKED, new LockedState(this));
-            _states.Add(ChestStates.UNLOCKING, new UnlockingState(this));
-            _states.Add(ChestStates.QUEUED, new QueuedState(this));
-            _states.Add(ChestStates.UNLOCKED, new UnlockedState(this));
-            _states.Add(ChestStates.COLLECTED, new CollectedState(this));
+            _states.Add(ChestStates.LOCKED, new LockedState(_owner,this));
+            _states.Add(ChestStates.UNLOCKING, new UnlockingState(_owner,this));
+            _states.Add(ChestStates.QUEUED, new QueuedState(_owner,this));
+            _states.Add(ChestStates.UNLOCKED, new UnlockedState(_owner,this));
+            _states.Add(ChestStates.COLLECTED, new CollectedState(_owner,this));
         }
 
         public void OnChestButtonClick()
@@ -47,7 +48,6 @@ namespace ChestSystem.Chest
                 if (state.Value == _currentState)
                     return state.Key;
             }
-
             return ChestStates.LOCKED;
         }
     }

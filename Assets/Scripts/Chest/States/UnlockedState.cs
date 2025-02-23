@@ -5,24 +5,25 @@ namespace ChestSystem.Chest
         public ChestController _owner { get; set; }
         private ChestStateMachine _stateMachine;
 
-        public UnlockedState(ChestStateMachine stateMachine)
+        public UnlockedState(ChestController Owner, ChestStateMachine stateMachine)
         {
+            _owner = Owner;
             _stateMachine = stateMachine;
         }
 
         public void OnStateEnter()
         {
-
+            _owner.ToggleUnlockedStateUI(true);
         }
 
         public void OnChestButtonClick()
         {
-
+            _owner.ChangeState(ChestStates.COLLECTED);
         }
 
         public void OnStateExit()
         {
-
+            _owner.ToggleUnlockedStateUI(false);
         }
     }
 

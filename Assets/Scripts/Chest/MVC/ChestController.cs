@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.VersionControl.Asset;
 
 namespace ChestSystem.Chest
 {
@@ -11,6 +12,7 @@ namespace ChestSystem.Chest
         private ChestModel _chestModel;
         private ChestView _chestView;
         protected ChestStateMachine _chestStateMachine;
+
         public ChestController(ChestScriptableObject chestSO, ChestView chestPrefab)
         {
             _chestModel = new ChestModel(chestSO);
@@ -27,17 +29,43 @@ namespace ChestSystem.Chest
             _chestView.gameObject.SetActive(true);
         }
 
-        public void ChestOpened()
+        protected void CreateStateMachine() => _chestStateMachine = new ChestStateMachine(this);
+
+        public ChestModel GetChestModel { get { return _chestModel; } private set { } }
+        public ChestView GetChestView { get { return _chestView; } private set { } }
+
+        public void OnChestButtonClicked()
+        {
+            _chestStateMachine.OnChestButtonClick();
+        }
+
+        public void ChestCollected()
         {
             _chestView.gameObject.SetActive(false);
             _chestView.gameObject.transform.SetParent(GameService.Instance.GetCanvasTransform);
             GameService.Instance.GetChestService().ReturnChestToPool(this);
         }
 
-        protected void CreateStateMachine() => _chestStateMachine = new ChestStateMachine(this);
-
-        public ChestModel GetChestModel { get { return _chestModel; } private set { } }
-        public ChestView GetChestView { get { return _chestView; } private set { } }
+        public void ChangeState(ChestStates newState)
+        {
+            _chestStateMachine.ChangeState(newState);
+        }
+        public void ToggleLockedStateUI(bool value)
+        {
+            _chestView.ToggleLockedStateUI(value);
+        }
+        public void ToggleUnlockingStateUI(bool value)
+        {
+            _chestView.ToggleUnlockingStateUI(value);
+        }
+        public void ToggleQueuedStateUI(bool value)
+        {
+            _chestView.ToggleQueuedStateUI(value);
+        }
+        public void ToggleUnlockedStateUI(bool value)
+        {
+            _chestView.ToggleUnlockedStateUI(value);
+        }
 
     }
 }
