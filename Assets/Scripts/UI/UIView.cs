@@ -4,14 +4,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace ChestSystem.UI
 {
     public class UIView : GenericMonoSingleton<UIView>
     {
         [Header("Currency")]
-        [SerializeField] private Image _coinsImage;
-        [SerializeField] private Image _gemsImage;
+        [SerializeField] private Image _coinsOwnedImage;
+        [SerializeField] private Image _gemsOwnedImage;
+        [SerializeField] private TextMeshProUGUI _coinsOwnedText;
+        [SerializeField] private TextMeshProUGUI _gemsOwnedText;
 
         [Header("Action Buttons")]
         [SerializeField] private Button _generateChestsButton;
@@ -32,6 +35,7 @@ namespace ChestSystem.UI
         {
             InitializePopUps();
             _popUpContainer.SetActive(false);
+            ShowNotification();
         }
 
         private void InitializePopUps()
@@ -43,6 +47,15 @@ namespace ChestSystem.UI
             _acknowledgementPopUpView.gameObject.SetActive(false);
             _confirmationPopUpView.gameObject.SetActive(false);
             _notificationPopUpView.gameObject.SetActive(false);
+
+          
+        }
+
+        public void ShowNotification()
+        {
+            _popUpContainer.SetActive(true);
+            _acknowledgementPopUpView.SetShowAcknowledgementMessage("Testing");
+            _acknowledgementPopUpView.ShowAcknowledgementPopUp();
         }
 
     }

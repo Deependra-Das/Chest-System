@@ -237,8 +237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b9895ab736df04e962bd8b8df70319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinsImage: {fileID: 4200383055922585966}
-  _gemsImage: {fileID: 8952452792924433760}
+  _coinsOwnedImage: {fileID: 0}
+  _gemsOwnedImage: {fileID: 0}
+  _coinsOwnedText: {fileID: 0}
+  _gemsOwnedText: {fileID: 0}
   _generateChestsButton: {fileID: 2132902252}
   _UndoOptionButton: {fileID: 1990837360}
   _popUpContainer: {fileID: 1869090193}
@@ -1322,7 +1324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1869090194
 RectTransform:
   m_ObjectHideFlags: 0
