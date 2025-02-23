@@ -1,8 +1,13 @@
+using static UnityEditor.VersionControl.Asset;
+
 namespace ChestSystem.Chest
 {
     public class CommonChest : ChestController
     {
-        public CommonChest(ChestScriptableObject chestSO, ChestView chestView) : base(chestSO, chestView) { }
-
+        public CommonChest(ChestScriptableObject chestSO, ChestView chestView) : base(chestSO, chestView) 
+        {
+            CreateStateMachine();
+            _chestStateMachine.ChangeState(ChestStates.LOCKED);
+        }
     }
 }

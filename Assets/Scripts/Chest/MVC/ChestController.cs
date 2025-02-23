@@ -1,6 +1,7 @@
 using ChestSystem.Main;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ChestSystem.Chest
@@ -9,7 +10,7 @@ namespace ChestSystem.Chest
     {
         private ChestModel _chestModel;
         private ChestView _chestView;
-        private ChestStateMachine _chestStateMachine;
+        protected ChestStateMachine _chestStateMachine;
         public ChestController(ChestScriptableObject chestSO, ChestView chestPrefab)
         {
             _chestModel = new ChestModel(chestSO);
@@ -33,8 +34,11 @@ namespace ChestSystem.Chest
             GameService.Instance.GetChestService().ReturnChestToPool(this);
         }
 
+        protected void CreateStateMachine() => _chestStateMachine = new ChestStateMachine(this);
+
         public ChestModel GetChestModel { get { return _chestModel; } private set { } }
         public ChestView GetChestView { get { return _chestView; } private set { } }
+
     }
 }
 
