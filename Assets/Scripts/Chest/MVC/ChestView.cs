@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +19,7 @@ namespace ChestSystem.Chest
         [SerializeField] private GameObject _lockedStateToggle;
         [SerializeField] private TextMeshProUGUI _lockedDurationText;
 
-        [Header("Unlocked State")]
+        [Header("Unlocking State")]
         [SerializeField] private GameObject _unlockingStateToggle;
         [SerializeField] private TextMeshProUGUI _unlockingTimerText;
         [SerializeField] private Image _unlockingClockImage;
@@ -31,24 +30,27 @@ namespace ChestSystem.Chest
         [SerializeField] private GameObject _queuedStateToggle;
         [SerializeField] private TextMeshProUGUI _queuedDurationText;
 
+        [Header("Unlocked State")]
+        [SerializeField] private GameObject _unlockedStateToggle;
 
         private ChestController _chestController;
 
         public void SetController(ChestController controller)
         {
             _chestController = controller;
-            SetChestDataOnUI();
+            InitializeChestView();
+        }
+
+        public void InitializeChestView()
+        {
             SetListeners();
+            SetChestDataOnUI();
+            DisableAllStatePanels();
         }
 
         private void SetListeners()
         {
-            _chestButton.onClick.AddListener(CheckClicked);
-        }
-
-        private void CheckClicked()
-        {
-            _chestController.ChestOpened();
+            _chestButton.onClick.AddListener(_chestController.OnChestButtonClicked);
         }
 
         public void SetChestDataOnUI()
@@ -67,6 +69,40 @@ namespace ChestSystem.Chest
 
             return formattedTime;
         }
+
+        public void DisableAllStatePanels()
+        {
+            _lockedStateToggle.gameObject.SetActive(false);
+            _unlockingStateToggle.gameObject.SetActive(false);
+            _queuedStateToggle.gameObject.SetActive(false);
+            _unlockedStateToggle.gameObject.SetActive(false);
+        }
+
+        private void Update() => _chestController?.UpdateChest();
+
+        public void UpdateUnlockingTimerText(float currentTimeLeft)
+        {
+            _unlockingTimerText.text = FormatTime((int)currentTimeLeft);
+        }  
+
+        public void ToggleLockedStateUI(bool value)
+        {
+            _lockedStateToggle.gameObject.SetActive(value);
+        }
+        public void ToggleUnlockingStateUI(bool value)
+        {
+            _unlockingStateToggle.gameObject.SetActive(value);
+        }
+        public void ToggleQueuedStateUI(bool value)
+        {
+            _queuedStateToggle.gameObject.SetActive(value);
+        }
+
+        public void ToggleUnlockedStateUI(bool value)
+        {
+            _unlockedStateToggle.gameObject.SetActive(value);
+        }
+ 
 
     }
 }
