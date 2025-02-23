@@ -7,10 +7,11 @@ using UnityEngine;
 
 namespace ChestSystem.ChestSlot
 {
-    public class UnlockingQueueService : GenericMonoSingleton<UnlockingQueueService>
+    public class UnlockingQueueService
     {
         private Queue<ChestSlotController> slotQueue;
         private bool _isProcessing;
+
         public UnlockingQueueService(int slotQueueSize)
         {
             slotQueue = new Queue<ChestSlotController>(slotQueueSize);
