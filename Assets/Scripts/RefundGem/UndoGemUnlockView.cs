@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ChestSystem.UI
+namespace ChestSystem.RefundGem
 {
     public class UndoGemUnlockView : GenericMonoSingleton<UndoGemUnlockView>
     {
