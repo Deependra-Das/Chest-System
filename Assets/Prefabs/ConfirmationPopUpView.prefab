@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 2182591935411971086}
   - component: {fileID: 4146149345608368263}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CoinImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -894,7 +894,7 @@ GameObject:
   - component: {fileID: 4960974267459086407}
   - component: {fileID: 182290373658119958}
   m_Layer: 5
-  m_Name: Image
+  m_Name: GemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1570,9 +1570,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecf7ad2f7963a04588f1c2e2d3a3a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _confirmationMessageText: {fileID: 0}
-  _confirmButton: {fileID: 0}
-  _cancelButton: {fileID: 0}
+  _confirmationContainer: {fileID: 8289024654663561510}
+  _chestImage: {fileID: 7083862414770335881}
+  _chestTypeText: {fileID: 4620981039085062514}
+  _coinImage: {fileID: 4146149345608368263}
+  _gemImage: {fileID: 182290373658119958}
+  _coinSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _gemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _possiblecoinsText: {fileID: 9187953160314136933}
+  _possiblegemsText: {fileID: 3810003167484450427}
+  _confirmationMessageText: {fileID: 2273421211822659813}
+  _confirmButton: {fileID: 1447343055044625996}
+  _cancelButton: {fileID: 1543815926292725450}
 --- !u!1 &8398052932467517790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1758,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2d75c2f8d144804c82d834c7b185289, type: 3}
+--- !u!114 &1447343055044625996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1327725723317084795, guid: f2d75c2f8d144804c82d834c7b185289, type: 3}
+  m_PrefabInstance: {fileID: 466396708547781687}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1465638825153461114 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1309993246959345485, guid: f2d75c2f8d144804c82d834c7b185289, type: 3}
@@ -1855,6 +1875,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2b45ae0c2a5b14fae0fcdf2d92b883, type: 3}
+--- !u!114 &1543815926292725450 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4441498105954790540, guid: 3f2b45ae0c2a5b14fae0fcdf2d92b883, type: 3}
+  m_PrefabInstance: {fileID: 2940818228475449926}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6536545065707013716 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8248795183383663634, guid: 3f2b45ae0c2a5b14fae0fcdf2d92b883, type: 3}

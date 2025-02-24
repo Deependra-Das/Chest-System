@@ -1,5 +1,6 @@
 using ChestSystem.ChestSlot;
 using ChestSystem.Main;
+using ChestSystem.UI;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -103,6 +104,11 @@ namespace ChestSystem.Chest
         public bool IsUnlockingSlotQueueEmpty()
         {
             return GameService.Instance.GetUnlockingQueueService().IsUnlockingSlotQueueEmpty();
+        }
+
+        public void ShowConfirmationPopUp(ConfirmationType type)
+        {
+            GameService.Instance.GetUIService().ShowConfirmationPopUp(this, _chestModel, _chestStateMachine.GetCurrentState(), type);
         }
     }
 }

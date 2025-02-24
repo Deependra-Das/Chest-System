@@ -1,3 +1,4 @@
+using ChestSystem.Chest;
 using ChestSystem.Main;
 using ChestSystem.UI;
 using System.Collections;
@@ -37,8 +38,14 @@ namespace ChestSystem.ChestSlot
 
         public void ShowAcknowledmentPopUp(string message)
         {
-            _acknowledgementView.SetShowAcknowledgementMessage(message);
+            _acknowledgementView.SetAcknowledgementContent(message);
             _acknowledgementView.ShowAcknowledgementPopUp();
+        }
+
+        public void ShowConfirmationPopUp(ChestController chestController, ChestModel chestModel, ChestStates state, ConfirmationType type)
+        {
+            _confirmationView.SetConfirmationContent(chestController, chestModel, state, type);
+            _confirmationView.ShowConfirmationPopUp();
         }
 
         public Transform GetSlotContainerTransform { get { return _uiView.GetSlotContainerTransform; } private set { } }

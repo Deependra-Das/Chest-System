@@ -16,7 +16,7 @@ namespace ChestSystem.UI
             _acknowledgementButton.onClick.AddListener(HideAcknowledgementPopUp);
         }
 
-        public void SetShowAcknowledgementMessage(string message)
+        public void SetAcknowledgementContent(string message)
         {
             _acknowledgementMessageText.text = message;
         }
@@ -28,7 +28,6 @@ namespace ChestSystem.UI
 
         private void HideAcknowledgementPopUp()
         {
-            Debug.Log("Clicked");
             _acknowledgementContainer.SetActive(false);          
         }
     }
