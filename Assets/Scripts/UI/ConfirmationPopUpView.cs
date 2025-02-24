@@ -14,8 +14,6 @@ namespace ChestSystem.UI
         [SerializeField] private TextMeshProUGUI _chestTypeText;
         [SerializeField] private Image _coinImage;
         [SerializeField] private Image _gemImage;
-        [SerializeField] private Sprite _coinSprite;
-        [SerializeField] private Sprite _gemSprite;
         [SerializeField] private TextMeshProUGUI _possiblecoinsText;
         [SerializeField] private TextMeshProUGUI _possiblegemsText;
         [SerializeField] private TextMeshProUGUI _confirmationMessageText;
@@ -32,13 +30,10 @@ namespace ChestSystem.UI
         {
             _currentChest = chestController;
             _chestImage.sprite = chestModel.ChestLockedImage;
-            _coinImage.sprite = _coinSprite;
-            _gemImage.sprite = _gemSprite;
 
             _chestTypeText.text = chestModel.ChestType.ToString()+" : "+ state.ToString();
-            _possiblecoinsText.text = chestModel.CoinsDrop.ToString();
-            _possiblegemsText.text = chestModel.GemsDrop.ToString();
-            _possiblegemsText.text = chestModel.GemsDrop.ToString();
+            _possiblecoinsText.text = chestModel.CoinsMinDrop.ToString()+"-"+ chestModel.CoinsMaxDrop.ToString();
+            _possiblegemsText.text = chestModel.GemsMinDrop.ToString()+"-"+chestModel.GemsMaxDrop.ToString();
 
             _confirmButton.onClick.RemoveAllListeners();
 

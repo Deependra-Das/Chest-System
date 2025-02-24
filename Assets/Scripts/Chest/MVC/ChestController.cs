@@ -1,6 +1,7 @@
 using ChestSystem.ChestSlot;
 using ChestSystem.Main;
 using ChestSystem.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -57,8 +58,27 @@ namespace ChestSystem.Chest
             _chestView.UpdateUnlockingTimerText(currentTimeLeft);
         }
 
+        public void UpdateGemCost(float currentTimeLeft)
+        {
+            _chestModel.UpdateGemCost(CalculateGemsCost(currentTimeLeft));
+        }
+
+        public int CalculateGemsCost(float currentTimeLeft)
+        {
+            float gemCost = currentTimeLeft / 10;
+            int totalGemsCost = (int)Math.Ceiling(gemCost);
+
+            return totalGemsCost;
+        }
+
         public void ChestCollected()
         {
+            int coinsDrop = UnityEngine.Random.Range(_chestModel.CoinsMinDrop, _chestModel.CoinsMaxDrop);
+            int gemsDrop = UnityEngine.Random.Range(_chestModel.GemsMinDrop, _chestModel.GemsMaxDrop);
+
+            GameService.Instance.GetCurrencyService().AddCoins(coinsDrop);
+            GameService.Instance.GetCurrencyService().AddGems(gemsDrop);
+
             _chestView.gameObject.SetActive(false);
             _chestView.gameObject.transform.SetParent(GameService.Instance.GetCanvasTransform);
             _chestSlotController.SetSlotState(ChestSlotStates.UNOCCUPIED);

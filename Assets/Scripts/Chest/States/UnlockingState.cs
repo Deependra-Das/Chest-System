@@ -29,6 +29,7 @@ namespace ChestSystem.Chest
         {
             timer -= Time.deltaTime;
             //_owner.UpdateUnlockingTimerText(timer/60);
+            _owner.UpdateGemCost(timer);
             _owner.UpdateUnlockingTimerText(timer);
 
             if (timer <= 0)
