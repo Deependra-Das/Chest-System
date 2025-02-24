@@ -86,10 +86,6 @@ namespace ChestSystem.Main
 
         }
 
-        private void Update()
-        {
-            _unlockingQueueService?.UpdateUnlockingSlotQueue();
-        }
     }
 
 }

@@ -107,11 +107,6 @@ namespace ChestSystem.Chest
         {
             _chestView.ToggleUnlockedStateUI(value);
         }
-
-        public void AddChestToUnlockingQueue()
-        {
-            GameService.Instance.GetUnlockingQueueService().EnqueueChestForUnlocking(this);
-        }
         public void RemoveChestFromUnlockingQueue()
         {
             GameService.Instance.GetUnlockingQueueService().DeqeueChestAfterUnlocking();
@@ -121,9 +116,9 @@ namespace ChestSystem.Chest
             GameService.Instance.GetChestSlotService().ResetSlotAfterCollecting(_chestSlotController);
         }
 
-        public bool IsUnlockingSlotQueueEmpty()
+        public bool IsUnlockingQueueEmpty()
         {
-            return GameService.Instance.GetUnlockingQueueService().IsUnlockingSlotQueueEmpty();
+            return GameService.Instance.GetUnlockingQueueService().IsUnlockingQueueEmpty();
         }
 
         public void ShowConfirmationPopUp(ConfirmationType type)

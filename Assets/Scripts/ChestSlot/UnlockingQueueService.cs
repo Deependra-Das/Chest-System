@@ -11,20 +11,24 @@ namespace ChestSystem.ChestSlot
     {
         private Queue<ChestController> chestQueue;
         private bool _isProcessing;
+        private int _maxQueueSize;
+
         public UnlockingQueueService(int queueSize)
         {
-            chestQueue = new Queue<ChestController>(queueSize);
+            chestQueue = new Queue<ChestController>();
+            _maxQueueSize = queueSize;
             _isProcessing = false;
         }
 
         public void EnqueueChestForUnlocking(ChestController chestSlot)
         {
             chestQueue.Enqueue(chestSlot);
+            UpdateUnlockingSlotQueue();
         }
 
         public void UpdateUnlockingSlotQueue()
         {
-            if(chestQueue.Count > 0 && _isProcessing == false)
+            if (chestQueue.Count > 0 && _isProcessing == false)
             {
                 ChestController frontChestInQueue = chestQueue.Peek();
 
@@ -52,18 +56,27 @@ namespace ChestSystem.ChestSlot
 
         public void DeqeueChestAfterUnlocking()
         {
-            Debug.Log(_isProcessing.ToString());
             chestQueue.Dequeue();
             _isProcessing = false;
+            UpdateUnlockingSlotQueue();
         }
 
-        public bool IsUnlockingSlotQueueEmpty()
+        public bool IsUnlockingQueueEmpty()
         {
             if(chestQueue.Count > 0)
             {
                 return false;
             }
             return true;
+        }
+
+        public bool IsUnlockingQueueFull()
+        {
+            if (chestQueue.Count == _maxQueueSize)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

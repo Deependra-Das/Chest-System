@@ -64,12 +64,14 @@ namespace ChestSystem.UI
         private void UnlockActionClicked()
         {
             _currentChest.ChangeChestState(ChestStates.UNLOCKING);
+            GameService.Instance.GetUnlockingQueueService().EnqueueChestForUnlocking(_currentChest);
             HideConfirmationPopUp();
         }
 
         private void QueueActionClicked()
         {
             _currentChest.ChangeChestState(ChestStates.QUEUED);
+            GameService.Instance.GetUnlockingQueueService().EnqueueChestForUnlocking(_currentChest);
             HideConfirmationPopUp();
         }
         private void GemUnlockActionClicked()

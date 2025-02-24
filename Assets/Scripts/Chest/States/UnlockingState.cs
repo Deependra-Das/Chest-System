@@ -22,7 +22,6 @@ namespace ChestSystem.Chest
         {
             ResetTimer();
             _owner.ToggleUnlockingStateUI(true);
-            _owner.AddChestToUnlockingQueue();
         }
 
         public void Update()
