@@ -46,7 +46,6 @@ namespace ChestSystem.Chest
         public void OnStateExit()
         {
             _owner.ToggleUnlockingStateUI(false);
-            _owner.RemoveChestFromUnlockingQueue();
             timer = 0;
         }
 

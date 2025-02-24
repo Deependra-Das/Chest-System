@@ -110,7 +110,7 @@ namespace ChestSystem.Chest
 
         public void AddChestToUnlockingQueue()
         {
-            GameService.Instance.GetUnlockingQueueService().EnqueueChestForUnlocking(_chestSlotController);
+            GameService.Instance.GetUnlockingQueueService().EnqueueChestForUnlocking(this);
         }
         public void RemoveChestFromUnlockingQueue()
         {
@@ -129,6 +129,11 @@ namespace ChestSystem.Chest
         public void ShowConfirmationPopUp(ConfirmationType type)
         {
             GameService.Instance.GetUIService().ShowConfirmationPopUp(this, _chestModel, _chestStateMachine.GetCurrentState(), type);
+        }
+
+        public ChestStates GetCurrentChestState()
+        {
+            return _chestStateMachine.GetCurrentState();
         }
     }
 }

@@ -9,43 +9,57 @@ namespace ChestSystem.ChestSlot
 {
     public class UnlockingQueueService
     {
-        private Queue<ChestSlotController> slotQueue;
+        private Queue<ChestController> chestQueue;
         private bool _isProcessing;
-
-        public UnlockingQueueService(int slotQueueSize)
+        public UnlockingQueueService(int queueSize)
         {
-            slotQueue = new Queue<ChestSlotController>(slotQueueSize);
+            chestQueue = new Queue<ChestController>(queueSize);
             _isProcessing = false;
         }
 
-        public void EnqueueChestForUnlocking(ChestSlotController chestSlot)
+        public void EnqueueChestForUnlocking(ChestController chestSlot)
         {
-            slotQueue.Enqueue(chestSlot);
+            chestQueue.Enqueue(chestSlot);
         }
 
         public void UpdateUnlockingSlotQueue()
         {
-            ProcessNextChestSlot();
-        }
-
-        public void ProcessNextChestSlot()
-        {
-            if (slotQueue.Count > 0 && _isProcessing == false)
+            if(chestQueue.Count > 0 && _isProcessing == false)
             {
-                ChestSlotController FrontChestInQueue = slotQueue.Peek();
-                FrontChestInQueue.GetChestStoredInSlot().ChangeChestState(ChestStates.UNLOCKING);
-                _isProcessing = true;
+                ChestController frontChestInQueue = chestQueue.Peek();
+
+                if (frontChestInQueue.GetCurrentChestState() == ChestStates.UNLOCKING)
+                {
+                    ProcessCurrentChestSlot();
+                }
+                else if (frontChestInQueue.GetCurrentChestState() == ChestStates.QUEUED)
+                {
+                    PrepareNextChestSlot();
+                }
             }
         }
+
+        public void ProcessCurrentChestSlot()
+        {
+            _isProcessing = true;
+        }
+
+        public void PrepareNextChestSlot()
+        {
+            ChestController frontChestInQueue = chestQueue.Peek();
+            frontChestInQueue.ChangeChestState(ChestStates.UNLOCKING);
+        }
+
         public void DeqeueChestAfterUnlocking()
         {
-            slotQueue.Dequeue();
+            Debug.Log(_isProcessing.ToString());
+            chestQueue.Dequeue();
             _isProcessing = false;
         }
 
         public bool IsUnlockingSlotQueueEmpty()
         {
-            if(slotQueue.Count > 0)
+            if(chestQueue.Count > 0)
             {
                 return false;
             }
