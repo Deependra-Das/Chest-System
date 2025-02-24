@@ -744,6 +744,7 @@ GameObject:
   - component: {fileID: 8446228982220525954}
   - component: {fileID: 6200285906258008158}
   - component: {fileID: 2981663670800067296}
+  - component: {fileID: 7365760086952522752}
   m_Layer: 5
   m_Name: UndoOptionView
   m_TagString: Untagged
@@ -836,6 +837,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &7365760086952522752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131756866698315998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8de2ba32ff40ad4784b18fb8632d199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6108301175669412115
 GameObject:
   m_ObjectHideFlags: 0

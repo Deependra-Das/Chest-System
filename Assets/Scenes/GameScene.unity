@@ -272,6 +272,7 @@ MonoBehaviour:
   _acknowledgementPrefab: {fileID: 5302715947521341658, guid: 0a99be2287d03fe40a8293fbe9f4fffe, type: 3}
   _confirmationPrefab: {fileID: -1298625370837102911, guid: 0c2cb0f460317c84cbc362de3a7333a9, type: 3}
   _notificationPrefab: {fileID: -6181386163044579188, guid: f4b86f43fb860664cbd74bfb3a47006f, type: 3}
+  _undoGemUnlockPrefab: {fileID: 156167837308606338, guid: d1c3724e40f53374494b17b94d6c5d97, type: 3}
   _chestSO_List:
   - {fileID: 11400000, guid: 4c122df166149894a8d865c732590ba2, type: 2}
   - {fileID: 11400000, guid: 84e03de5ebb6a224ba1b04706e1558d4, type: 2}

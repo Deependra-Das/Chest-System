@@ -25,6 +25,7 @@ namespace ChestSystem.Main
         [SerializeField] private AcknowledgementPopUpView _acknowledgementPrefab;
         [SerializeField] private ConfirmationPopUpView _confirmationPrefab;
         [SerializeField] private NotificationPopUpView _notificationPrefab;
+        [SerializeField] private UndoGemUnlockView _undoGemUnlockPrefab;
 
 
         [Header("Scriptable Objects")]
@@ -40,7 +41,7 @@ namespace ChestSystem.Main
    
         private void Start()
         {
-            _uiService = new UIService(_uiPrefab, _acknowledgementPrefab, _confirmationPrefab, _notificationPrefab, _canvasTransform);
+            _uiService = new UIService(_uiPrefab, _acknowledgementPrefab, _confirmationPrefab, _notificationPrefab, _undoGemUnlockPrefab, _canvasTransform);
             _chestService = new ChestService(_chestSO_List,_chestPrefab);
             _chestSlotService = new ChestSlotService(_chestSlotPrefab, _chestSlotCount);
             _unlockingQueueService = new UnlockingQueueService(_chestSlotCount);
