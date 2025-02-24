@@ -7,6 +7,7 @@ using ChestSystem.Chest;
 using ChestSystem.ChestSlot;
 using ChestSystem.UI;
 using ChestSystem.Currency;
+using ChestSystem.Commands;
 
 namespace ChestSystem.Main
 {
@@ -17,6 +18,7 @@ namespace ChestSystem.Main
         private UnlockingQueueService _unlockingQueueService;
         private UIService _uiService;
         private CurrencyService _currencyService;
+        private CommandInvoker _commandInvoker;
 
         [SerializeField] private int _chestSlotCount;
 
@@ -43,6 +45,7 @@ namespace ChestSystem.Main
    
         private void Start()
         {
+            _commandInvoker = new CommandInvoker();
             _currencyService = new CurrencyService(_currencyPrefab, _canvasTransform);
             _uiService = new UIService(_uiPrefab, _acknowledgementPrefab, _confirmationPrefab, _notificationPrefab, _undoGemUnlockPrefab, _canvasTransform);
             _chestService = new ChestService(_chestSO_List,_chestPrefab);
@@ -67,6 +70,7 @@ namespace ChestSystem.Main
         public UnlockingQueueService GetUnlockingQueueService() => _unlockingQueueService;
         public UIService GetUIService() => _uiService;
         public CurrencyService GetCurrencyService() => _currencyService;
+        public CommandInvoker GetCommandInvoker() => _commandInvoker;
 
         public void GenerateChest()
         {

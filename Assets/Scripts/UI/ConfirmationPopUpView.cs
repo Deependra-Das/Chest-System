@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using ChestSystem.Chest;
+using ChestSystem.Main;
+using ChestSystem.Commands;
 
 namespace ChestSystem.UI
 {
@@ -72,7 +74,9 @@ namespace ChestSystem.UI
         }
         private void GemUnlockActionClicked()
         {
-            _currentChest.ChangeChestState(ChestStates.UNLOCKED);
+            ICommand unlockWithGemCommand = new UnlockWithGemCommand(_currentChest);
+            GameService.Instance.GetCommandInvoker().ProcessCommand(unlockWithGemCommand);
+            GameService.Instance.GetCommandInvoker().PrintRegistry();
             HideConfirmationPopUp();
         }
 
