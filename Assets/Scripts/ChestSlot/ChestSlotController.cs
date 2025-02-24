@@ -14,7 +14,7 @@ namespace ChestSystem.ChestSlot
         private ChestController _chestObj;
         public ChestSlotController(ChestSlotView chestSlotPrefab)
         {
-            _chestSlotView = GameObject.Instantiate(chestSlotPrefab, GameService.Instance.GetSlotContentTransform);
+            _chestSlotView = GameObject.Instantiate(chestSlotPrefab, GameService.Instance.GetUIService().GetSlotContainerTransform);
             _chestSlotView.SetController(this);
             _chestSlotState = ChestSlotStates.UNOCCUPIED;
             _chestObj = null;

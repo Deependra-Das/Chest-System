@@ -1,4 +1,5 @@
 using ChestSystem.Chest;
+using ChestSystem.UI;
 
 namespace ChestSystem.Chest
 {
@@ -24,11 +25,11 @@ namespace ChestSystem.Chest
         {
             if(_owner.IsUnlockingSlotQueueEmpty())
             {
-                _stateMachine.ChangeState(ChestStates.UNLOCKING);
+                _owner.ShowConfirmationPopUp(ConfirmationType.StartUnlocking);
             }
             else
             {
-                _stateMachine.ChangeState(ChestStates.QUEUED);
+                _owner.ShowConfirmationPopUp(ConfirmationType.Queuing);
             }            
         }
 

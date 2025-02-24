@@ -55,6 +55,7 @@ namespace ChestSystem.Chest
 
         public void SetChestDataOnUI()
         {
+            _chestImage.sprite = _chestController.GetChestModel.ChestLockedImage;
             _lockedDurationText.text = FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
             _unlockingTimerText.text = FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
             _queuedDurationText.text = FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
