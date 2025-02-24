@@ -73,6 +73,12 @@ namespace ChestSystem.Chest
 
         public void ChestCollected()
         {
+            int coinsDrop = UnityEngine.Random.Range(_chestModel.CoinsMinDrop, _chestModel.CoinsMaxDrop);
+            int gemsDrop = UnityEngine.Random.Range(_chestModel.GemsMinDrop, _chestModel.GemsMaxDrop);
+
+            GameService.Instance.GetCurrencyService().AddCoins(coinsDrop);
+            GameService.Instance.GetCurrencyService().AddGems(gemsDrop);
+
             _chestView.gameObject.SetActive(false);
             _chestView.gameObject.transform.SetParent(GameService.Instance.GetCanvasTransform);
             _chestSlotController.SetSlotState(ChestSlotStates.UNOCCUPIED);
