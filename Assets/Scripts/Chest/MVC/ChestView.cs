@@ -59,7 +59,7 @@ namespace ChestSystem.Chest
             _lockedDurationText.text = FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
             _unlockingTimerText.text = FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
             _queuedDurationText.text = FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
-            _gemCostText.text = _chestController.GetChestModel.GemsCost.ToString();
+           
         }
 
         public string FormatTime(int minutes)
@@ -79,12 +79,21 @@ namespace ChestSystem.Chest
             _unlockedStateToggle.gameObject.SetActive(false);
         }
 
-        private void Update() => _chestController?.UpdateChest();
+        private void Update()
+        {
+            _chestController.UpdateChest();
+            UpdateGemCostText();
+        }
 
         public void UpdateUnlockingTimerText(float currentTimeLeft)
         {
             _unlockingTimerText.text = FormatTime((int)currentTimeLeft);
-        }  
+        }
+
+        public void UpdateGemCostText()
+        {
+            _gemCostText.text = _chestController.GetChestModel.GemsCost.ToString();
+        }
 
         public void ToggleLockedStateUI(bool value)
         {

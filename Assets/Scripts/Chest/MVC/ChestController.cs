@@ -1,6 +1,7 @@
 using ChestSystem.ChestSlot;
 using ChestSystem.Main;
 using ChestSystem.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -55,6 +56,19 @@ namespace ChestSystem.Chest
         public void UpdateUnlockingTimerText(float currentTimeLeft)
         {
             _chestView.UpdateUnlockingTimerText(currentTimeLeft);
+        }
+
+        public void UpdateGemCost(float currentTimeLeft)
+        {
+            _chestModel.UpdateGemCost(CalculateGemsCost(currentTimeLeft));
+        }
+
+        public int CalculateGemsCost(float currentTimeLeft)
+        {
+            float gemCost = currentTimeLeft / 10;
+            int totalGemsCost = (int)Math.Ceiling(gemCost);
+
+            return totalGemsCost;
         }
 
         public void ChestCollected()
