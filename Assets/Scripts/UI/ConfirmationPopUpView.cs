@@ -54,6 +54,7 @@ namespace ChestSystem.UI
                     break;
                 case ConfirmationType.UnlockWithGems:
                     _confirmationMessageText.text = "Do you want to spend "+chestModel.GemsCost.ToString()+" gems to unlock it ?";
+                    _confirmButton.onClick.AddListener(GemUnlockActionClicked);
                     break;
                 case ConfirmationType.UndoGemSpent:
                     _confirmationMessageText.text = "Do you want to get back " + chestModel.GemsCost.ToString() + " gems spent on Unlocking this chest ? Note: This will Re-Lock the Chest";
@@ -72,6 +73,11 @@ namespace ChestSystem.UI
         private void QueueActionClicked()
         {
             _currentChest.ChangeChestState(ChestStates.QUEUED);
+            HideConfirmationPopUp();
+        }
+        private void GemUnlockActionClicked()
+        {
+            _currentChest.ChangeChestState(ChestStates.UNLOCKED);
             HideConfirmationPopUp();
         }
 

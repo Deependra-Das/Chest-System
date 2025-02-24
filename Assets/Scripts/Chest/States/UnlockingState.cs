@@ -2,6 +2,7 @@ using static UnityEditor.VersionControl.Asset;
 using UnityEngine;
 using ChestSystem.Main;
 using ChestSystem.ChestSlot;
+using ChestSystem.UI;
 
 namespace ChestSystem.Chest
 {
@@ -38,7 +39,7 @@ namespace ChestSystem.Chest
 
         public void OnChestButtonClick()
         {
-            _stateMachine.ChangeState(ChestStates.UNLOCKED);
+            _owner.ShowConfirmationPopUp(ConfirmationType.UnlockWithGems);
         }
 
         public void OnStateExit()
