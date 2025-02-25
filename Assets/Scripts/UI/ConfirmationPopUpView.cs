@@ -93,7 +93,7 @@ namespace ChestSystem.UI
             _confirmationContainer.SetActive(true);
         }
 
-        private void HideConfirmationPopUp()
+        public void HideConfirmationPopUp()
         {
             _confirmationContainer.SetActive(false);
         }

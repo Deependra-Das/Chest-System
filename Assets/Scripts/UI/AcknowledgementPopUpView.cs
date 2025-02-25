@@ -5,7 +5,7 @@ using ChestSystem.Utilities;
 
 namespace ChestSystem.UI
 {
-    public class AcknowledgementPopUpView : GenericMonoSingleton<AcknowledgementPopUpView>
+    public class AcknowledgementPopUpView : MonoBehaviour
     {
         [SerializeField] private GameObject _acknowledgementContainer;
         [SerializeField] private TextMeshProUGUI _acknowledgementMessageText;
@@ -26,7 +26,7 @@ namespace ChestSystem.UI
             _acknowledgementContainer.SetActive(true);
         }
 
-        private void HideAcknowledgementPopUp()
+        public void HideAcknowledgementPopUp()
         {
             _acknowledgementContainer.SetActive(false);          
         }

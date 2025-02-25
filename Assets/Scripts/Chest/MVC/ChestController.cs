@@ -118,14 +118,14 @@ namespace ChestSystem.Chest
             GameService.Instance.GetChestSlotService().ResetSlotAfterCollecting(_chestSlotController);
         }
 
-        public bool IsUnlockingQueueEmpty()
-        {
-            return GameService.Instance.GetUnlockingQueueService().IsUnlockingQueueEmpty();
-        }
-
         public void ShowConfirmationPopUp(ConfirmationType type)
         {
             GameService.Instance.GetUIService().ShowConfirmationPopUp(this, type);
+        }
+
+        public void ShowActionPopUp()
+        {
+            GameService.Instance.GetUIService().ShowActionPopUp(this);
         }
 
         public ChestStates GetCurrentChestState()
