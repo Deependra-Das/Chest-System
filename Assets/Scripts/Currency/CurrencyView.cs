@@ -7,15 +7,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CurrencyView : GenericMonoSingleton<CurrencyView>
+public class CurrencyView : MonoBehaviour
 {    
     [SerializeField] private TextMeshProUGUI _coinsOwnedText;
     [SerializeField] private TextMeshProUGUI _gemsOwnedText;
-
-    private void Start()
-    {
-       
-    }
 
     private void Update()
     {

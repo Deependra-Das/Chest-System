@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace ChestSystem.RefundGem
 {
-    public class UndoGemUnlockView : GenericMonoSingleton<UndoGemUnlockView>
+    public class UndoGemUnlockView : MonoBehaviour
     {
         [SerializeField] private GameObject _UndoGemUnlockContainer;
         [SerializeField] private Transform _UndoGemContentTransform;
