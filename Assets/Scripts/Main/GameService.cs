@@ -24,6 +24,9 @@ namespace ChestSystem.Main
 
         [SerializeField] private int _chestSlotCount;
 
+        [Header("Transform")]
+        [SerializeField] private Transform _canvasTransform;
+
         [Header("Views/Prefabs")]
         [SerializeField] private ChestView _chestPrefab;
         [SerializeField] private ChestSlotView _chestSlotPrefab;
@@ -33,14 +36,11 @@ namespace ChestSystem.Main
         [SerializeField] private NotificationPopUpView _notificationPrefab;
         [SerializeField] private ActionPopUpView _actionPrefab;
         [SerializeField] private UndoGemUnlockView _undoGemUnlockPrefab;
-        [SerializeField] private UndoOptionView _undoOptionView;
+        [SerializeField] private UndoOptionView _undoOptionPrefab;
         [SerializeField] private CurrencyView _currencyPrefab;
 
         [Header("Scriptable Objects")]
         [SerializeField] private List<ChestScriptableObject> _chestSO_List;
-
-        [Header("Transform")]
-        [SerializeField] private Transform _canvasTransform;
 
         [Header("Audio")]
         [SerializeField] private SoundScriptableObject _audioList;
@@ -60,7 +60,7 @@ namespace ChestSystem.Main
             _chestService = new ChestService(_chestSO_List,_chestPrefab);
             _chestSlotService = new ChestSlotService(_chestSlotPrefab, _chestSlotCount);
             _unlockingQueueService = new UnlockingQueueService(_chestSlotCount);
-            _refundGemService = new RefundGemService(_undoGemUnlockPrefab, _undoOptionView, _canvasTransform);
+            _refundGemService = new RefundGemService(_undoGemUnlockPrefab, _undoOptionPrefab, _canvasTransform);
             _soundService = new SoundService(_audioList, _audioSource_SFX, _audioSource_BGM);
 
             Initialize();
