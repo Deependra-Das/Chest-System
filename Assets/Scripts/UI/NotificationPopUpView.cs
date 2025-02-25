@@ -22,6 +22,9 @@ namespace ChestSystem.UI
                 case NotificationType.SlotNotAvailable:
                     _notificationMessageText.text = "All the slots are Occupied. Unlock & Collect a Chest to free one of the slots";
                     break;
+                case NotificationType.AlreadyQueued:
+                    _notificationMessageText.text = "This Chest is already Queued for Unlocking with Timer.";
+                    break;
 
             }
             SetListeners();

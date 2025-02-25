@@ -80,17 +80,24 @@ namespace ChestSystem.Main
             {
                 _uiService.ShowNotificationPopUp(NotificationType.SlotNotAvailable);
             }
-
         }
 
         public Transform GetCanvasTransform { get { return _canvasTransform; } private set { } }
+
         public ChestService GetChestService() => _chestService;
+
         public ChestSlotService GetChestSlotService() => _chestSlotService;
+
         public UnlockingQueueService GetUnlockingQueueService() => _unlockingQueueService;
+
         public UIService GetUIService() => _uiService;
+
         public CurrencyService GetCurrencyService() => _currencyService;
+
         public CommandInvoker GetCommandInvoker() => _commandInvoker;
+
         public RefundGemService GetRefundGemService() => _refundGemService;
+
         public string FormatTime(int minutes)
         {
             int hours = minutes / 60;

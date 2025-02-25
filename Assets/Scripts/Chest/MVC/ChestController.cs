@@ -131,6 +131,11 @@ namespace ChestSystem.Chest
             GameService.Instance.GetUIService().ShowActionPopUp(this);
         }
 
+        public void ShowQueuedNotificationPopUp()
+        {
+            GameService.Instance.GetUIService().ShowNotificationPopUp(NotificationType.AlreadyQueued);
+        }
+
         public ChestStates GetCurrentChestState()
         {
             return _chestStateMachine.GetCurrentState();

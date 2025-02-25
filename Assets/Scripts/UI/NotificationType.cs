@@ -4,5 +4,6 @@ namespace ChestSystem.UI
     {
         InsufficientGem,
         SlotNotAvailable,
+        AlreadyQueued,
     }
 }
