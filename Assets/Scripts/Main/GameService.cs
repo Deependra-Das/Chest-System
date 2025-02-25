@@ -9,6 +9,7 @@ using ChestSystem.UI;
 using ChestSystem.Currency;
 using ChestSystem.Commands;
 using ChestSystem.RefundGem;
+using ChestSystem.Sound;
 
 namespace ChestSystem.Main
 {
@@ -21,6 +22,7 @@ namespace ChestSystem.Main
         private CurrencyService _currencyService;
         private CommandInvoker _commandInvoker;
         private RefundGemService _refundGemService;
+        private SoundService _soundService;
 
         [SerializeField] private int _chestSlotCount;
 
@@ -42,6 +44,11 @@ namespace ChestSystem.Main
         [Header("Transform")]
         [SerializeField] private Transform _canvasTransform;
 
+        [Header("Audio")]
+        [SerializeField] private SoundScriptableObject _audioList;
+        [SerializeField] private AudioSource _audioSource_SFX;
+        [SerializeField] private AudioSource _audioSource_BGM;
+
         protected override void Awake()
         {
             base.Awake();
@@ -56,6 +63,7 @@ namespace ChestSystem.Main
             _chestSlotService = new ChestSlotService(_chestSlotPrefab, _chestSlotCount);
             _unlockingQueueService = new UnlockingQueueService(_chestSlotCount);
             _refundGemService = new RefundGemService(_undoGemUnlockPrefab, _undoOptionView, _canvasTransform);
+            _soundService = new SoundService(_audioList, _audioSource_SFX, _audioSource_BGM);
 
             Initialize();
         }
@@ -97,6 +105,8 @@ namespace ChestSystem.Main
         public CommandInvoker GetCommandInvoker() => _commandInvoker;
 
         public RefundGemService GetRefundGemService() => _refundGemService;
+
+        public SoundService GetSoundService() => _soundService;
 
         public string FormatTime(int minutes)
         {
