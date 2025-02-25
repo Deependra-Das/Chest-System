@@ -106,3 +106,5 @@ Used for chest & audio data to allow designers to make adjustments through inspe
 
 ## Gameplay Video
 
+https://youtu.be/QaLykh2eaGI
+
