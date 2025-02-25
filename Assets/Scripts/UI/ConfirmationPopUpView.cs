@@ -24,11 +24,6 @@ namespace ChestSystem.UI
 
         private ChestController _currentChest;
 
-        private void Start()
-        {
-            _cancelButton.onClick.AddListener(HideConfirmationPopUp);
-        }
-
         public void SetConfirmationContent(ChestController chestController, ConfirmationType type)
         {
             _currentChest = chestController;
@@ -39,6 +34,8 @@ namespace ChestSystem.UI
             _possiblegemsText.text = chestController.GetChestModel.GemsMinDrop.ToString()+"-"+chestController.GetChestModel.GemsMaxDrop.ToString();
 
             _confirmButton.onClick.RemoveAllListeners();
+            _cancelButton.onClick.RemoveAllListeners();
+            _cancelButton.onClick.AddListener(HideConfirmationPopUp);
 
             switch (type)
             {

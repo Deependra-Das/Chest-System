@@ -1935,6 +1935,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CancelButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5699720459224702132, guid: 3f2b45ae0c2a5b14fae0fcdf2d92b883, type: 3}
+      propertyPath: m_text
+      value: Cancel
+      objectReference: {fileID: 0}
     - target: {fileID: 8248795183383663634, guid: 3f2b45ae0c2a5b14fae0fcdf2d92b883, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

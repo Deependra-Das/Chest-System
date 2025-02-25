@@ -38,9 +38,9 @@ namespace ChestSystem.ChestSlot
             _actionView.HideActionPopUp();
         }
 
-        public void ShowAcknowledmentPopUp(string message)
+        public void ShowAcknowledmentPopUp(ChestController chest, int coinDrop, int gemDrop)
         {
-            _acknowledgementView.SetAcknowledgementContent(message);
+            _acknowledgementView.SetAcknowledgementContent(chest, coinDrop, gemDrop);
             _acknowledgementView.ShowAcknowledgementPopUp();
         }
 

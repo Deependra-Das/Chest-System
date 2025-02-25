@@ -62,6 +62,7 @@ namespace ChestSystem.UI
             
             HideActionPopUp();
         }
+        
         private void UnlockWithGemsButtonClicked()
         {
             if(GameService.Instance.GetCurrencyService().GemsOwned >= _currentChest.GetChestModel.GemsCost)

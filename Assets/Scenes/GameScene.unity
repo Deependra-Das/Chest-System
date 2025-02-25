@@ -269,9 +269,9 @@ MonoBehaviour:
   _chestPrefab: {fileID: 624034796563659330, guid: 18d406595a9f9d741b555374ad9044ed, type: 3}
   _chestSlotPrefab: {fileID: 576590977260066016, guid: 533f40e9f868caf47abb36cd48905f8d, type: 3}
   _uiPrefab: {fileID: 4146432992851666060, guid: bbac79ae31e5a0d45a89861ff33afab0, type: 3}
-  _acknowledgementPrefab: {fileID: 5302715947521341658, guid: 0a99be2287d03fe40a8293fbe9f4fffe, type: 3}
+  _acknowledgementPrefab: {fileID: 3515136888572510705, guid: f4b86f43fb860664cbd74bfb3a47006f, type: 3}
   _confirmationPrefab: {fileID: -1298625370837102911, guid: 0c2cb0f460317c84cbc362de3a7333a9, type: 3}
-  _notificationPrefab: {fileID: -6181386163044579188, guid: f4b86f43fb860664cbd74bfb3a47006f, type: 3}
+  _notificationPrefab: {fileID: 4246660228531161189, guid: 0a99be2287d03fe40a8293fbe9f4fffe, type: 3}
   _actionPrefab: {fileID: 6382464592008975198, guid: dcdab2eae9f8dc94fab19792e6a1f661, type: 3}
   _undoGemUnlockPrefab: {fileID: 156167837308606338, guid: d1c3724e40f53374494b17b94d6c5d97, type: 3}
   _undoOptionView: {fileID: 7365760086952522752, guid: 15eae5f904c322746ac987d582fdc8ce, type: 3}
