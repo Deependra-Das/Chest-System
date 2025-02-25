@@ -46,12 +46,9 @@ namespace ChestSystem.Commands
                 if (command.GetChestController() == controller)
                 {
                     _commandRegistry.RemoveAt(i);
-                    Debug.Log($"Removed command");
                     return;
                 }
             }
-
-            Debug.Log($"No command found for the chest to remove.");
         }
         
         public void PrintRegistry()
