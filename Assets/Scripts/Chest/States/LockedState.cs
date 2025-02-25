@@ -1,8 +1,3 @@
-using ChestSystem.Chest;
-using ChestSystem.Main;
-using ChestSystem.Sound;
-using ChestSystem.UI;
-
 namespace ChestSystem.Chest
 {
     public class LockedState : IChestState
