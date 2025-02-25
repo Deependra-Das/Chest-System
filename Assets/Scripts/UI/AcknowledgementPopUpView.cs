@@ -18,7 +18,7 @@ namespace ChestSystem.UI
 
         public void SetAcknowledgementContent(ChestController chestController, int coinDrop, int gemDrop)
         {
-            _chestImage.sprite = chestController.GetChestModel.ChestLockedImage;
+            _chestImage.sprite = chestController.GetChestModel.ChestUnlockedImage;
             _coinsDropText.text = coinDrop.ToString();
             _gemsDropText.text = gemDrop.ToString();
             _acknowledgementMessageText.text = chestController.GetChestModel.ChestType.ToString() +" Chest was Collected";

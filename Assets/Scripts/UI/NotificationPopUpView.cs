@@ -22,7 +22,7 @@ namespace ChestSystem.UI
                     _notificationMessageText.text = "You don't have sufficient Gems for this Action";
                     break;
                 case NotificationType.SlotNotAvailable:
-                    _notificationMessageText.text = "All the slots are Occupied. Unlock & Collect a Chest to free one of the slots";
+                    _notificationMessageText.text = "All the slots are Occupied.<br>Unlock & Collect a Chest to free one of the slots";
                     break;
                 case NotificationType.AlreadyQueued:
                     _notificationMessageText.text = "This Chest is already Queued for Unlocking with Timer.";
