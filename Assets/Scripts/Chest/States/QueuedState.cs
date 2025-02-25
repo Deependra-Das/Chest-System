@@ -16,7 +16,7 @@ namespace ChestSystem.Chest
             _owner.ToggleQueuedStateUI(true);
         }
 
-        public void Update() { }
+        public void Update() {}
 
         public void OnChestButtonClick()
         {

@@ -1,5 +1,3 @@
-using static UnityEditor.VersionControl.Asset;
-
 namespace ChestSystem.Chest
 {
     public class CommonChest : ChestController
@@ -9,5 +7,6 @@ namespace ChestSystem.Chest
             CreateStateMachine();
             _chestStateMachine.ChangeState(ChestStates.LOCKED);
         }
+
     }
 }

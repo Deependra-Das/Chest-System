@@ -9,11 +9,6 @@ namespace ChestSystem.Chest
     {
         [Header("Prefab Data")]
         [SerializeField] private Button _chestButton;
-        [SerializeField] private Image _commonBG;
-        [SerializeField] private Image _rareBG;
-        [SerializeField] private Image _epicBG;
-        [SerializeField] private Image _legendaryBG;
-        [SerializeField] private Image _rarityImage;
         [SerializeField] private Image _chestImage;
 
         [Header("Locked State")]
@@ -91,10 +86,12 @@ namespace ChestSystem.Chest
         {
             _lockedStateToggle.gameObject.SetActive(value);
         }
+
         public void ToggleUnlockingStateUI(bool value)
         {
             _unlockingStateToggle.gameObject.SetActive(value);
         }
+
         public void ToggleQueuedStateUI(bool value)
         {
             _queuedStateToggle.gameObject.SetActive(value);
@@ -105,6 +102,5 @@ namespace ChestSystem.Chest
             _unlockedStateToggle.gameObject.SetActive(value);
         }
  
-
     }
 }

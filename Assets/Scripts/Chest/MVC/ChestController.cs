@@ -5,10 +5,7 @@ using ChestSystem.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
-using static UnityEditor.VersionControl.Asset;
 
 namespace ChestSystem.Chest
 {
@@ -39,6 +36,7 @@ namespace ChestSystem.Chest
         protected void CreateStateMachine() => _chestStateMachine = new ChestStateMachine(this);
 
         public ChestModel GetChestModel { get { return _chestModel; } private set { } }
+
         public ChestView GetChestView { get { return _chestView; } private set { } }
 
         public void OnChestButtonClicked()
@@ -102,22 +100,27 @@ namespace ChestSystem.Chest
         {
             _chestView.ToggleLockedStateUI(value);
         }
+
         public void ToggleUnlockingStateUI(bool value)
         {
             _chestView.ToggleUnlockingStateUI(value);
         }
+
         public void ToggleQueuedStateUI(bool value)
         {
             _chestView.ToggleQueuedStateUI(value);
         }
+
         public void ToggleUnlockedStateUI(bool value)
         {
             _chestView.ToggleUnlockedStateUI(value);
         }
+
         public void RemoveChestFromUnlockingQueue()
         {
             GameService.Instance.GetUnlockingQueueService().DeqeueChestAfterUnlocking();
         }
+
         public void ResetSlotAfterCollecting()
         {
             GameService.Instance.GetChestSlotService().ResetSlotAfterCollecting(_chestSlotController);

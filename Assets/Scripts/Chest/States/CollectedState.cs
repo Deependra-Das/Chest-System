@@ -16,7 +16,8 @@ namespace ChestSystem.Chest
             _owner.ResetSlotAfterCollecting();
             _owner.ChestCollected();
         }
-        public void Update() { }
+
+        public void Update() {}
 
         public void OnChestButtonClick() {}
 

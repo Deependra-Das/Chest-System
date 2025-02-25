@@ -1,7 +1,4 @@
-using static UnityEditor.VersionControl.Asset;
 using UnityEngine;
-using ChestSystem.Main;
-using ChestSystem.ChestSlot;
 using ChestSystem.UI;
 
 namespace ChestSystem.Chest

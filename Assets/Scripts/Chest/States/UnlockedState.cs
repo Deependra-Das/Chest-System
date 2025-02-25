@@ -1,4 +1,3 @@
-using ChestSystem.ChestSlot;
 using ChestSystem.Main;
 
 namespace ChestSystem.Chest
@@ -24,7 +23,7 @@ namespace ChestSystem.Chest
             _owner.ToggleUnlockedStateUI(true);
         }
 
-        public void Update() { }
+        public void Update() {}
 
         public void OnChestButtonClick()
         {
