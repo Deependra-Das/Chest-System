@@ -1,9 +1,8 @@
-using ChestSystem.Chest;
-using ChestSystem.Main;
-using ChestSystem.Sound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ChestSystem.Main;
+using ChestSystem.Sound;
 
 namespace ChestSystem.Currency
 {
