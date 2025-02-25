@@ -1,10 +1,9 @@
-using ChestSystem.Chest;
-using ChestSystem.Commands;
-using ChestSystem.Main;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ChestSystem.Chest;
+using ChestSystem.Main;
 
 namespace ChestSystem.Commands
 {
@@ -63,9 +62,7 @@ namespace ChestSystem.Commands
         public List<ChestController> GetUnlockGemRegistryData()
         {
             List<ICommand> unlockGemRegistryData = _commandRegistry.Where(x => x.GetType().Name == "UnlockWithGemCommand").ToList();
-
             List<ChestController> chestswithUnclockGemCommand = unlockGemRegistryData.Select(p => p.GetChestController()).ToList();
-
             return chestswithUnclockGemCommand;
         }
     }
