@@ -74,8 +74,16 @@ namespace ChestSystem.UI
 
         private void GemUnlockActionClicked()
         {
-            ICommand unlockWithGemCommand = new UnlockWithGemCommand(_currentChest);
-            GameService.Instance.GetCommandInvoker().ProcessCommand(unlockWithGemCommand);
+            if(GameService.Instance.GetCurrencyService().GemsOwned>=_currentChest.GetChestModel.GemsCost)
+            {
+                ICommand unlockWithGemCommand = new UnlockWithGemCommand(_currentChest);
+                GameService.Instance.GetCommandInvoker().ProcessCommand(unlockWithGemCommand);
+            }
+            else
+            {
+                GameService.Instance.GetUIService().ShowNotificationPopUp(NotificationType.InsufficientGem);
+            }
+    
             HideConfirmationPopUp();
         }
 
