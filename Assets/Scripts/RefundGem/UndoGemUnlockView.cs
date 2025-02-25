@@ -11,6 +11,7 @@ namespace ChestSystem.RefundGem
     {
         [SerializeField] private GameObject _UndoGemUnlockContainer;
         [SerializeField] private Transform _UndoGemContentTransform;
+        [SerializeField] private GameObject _noDataMessageToggle;
         [SerializeField] private Button _closeButton;
 
         private void Start()
@@ -31,6 +32,11 @@ namespace ChestSystem.RefundGem
         public Transform GetUndoGemContentTransform()
         {
             return _UndoGemContentTransform;
+        }
+
+        public void ToggleNoDataMessageUI(bool value)
+        {
+            _noDataMessageToggle.gameObject.SetActive(value);
         }
     }
 

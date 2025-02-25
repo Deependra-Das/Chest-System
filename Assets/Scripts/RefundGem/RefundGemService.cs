@@ -31,13 +31,23 @@ namespace ChestSystem.RefundGem
         {
             List<ChestController> chestswithUnclockGemCommand=GameService.Instance.GetCommandInvoker().GetUnlockGemRegistryData();
 
-            foreach(ChestController chest in chestswithUnclockGemCommand)
+            if(chestswithUnclockGemCommand.Count>0)
             {
-                UndoOptionController newOption = _undoOptionPool.GetUndoOption();
-                newOption.Configure(_undoGemUnlockView.GetUndoGemContentTransform());
-                newOption.SetData(chest);
-                optionList.Add(newOption);
+                _undoGemUnlockView.ToggleNoDataMessageUI(false);
+
+                foreach (ChestController chest in chestswithUnclockGemCommand)
+                {
+                    UndoOptionController newOption = _undoOptionPool.GetUndoOption();
+                    newOption.Configure(_undoGemUnlockView.GetUndoGemContentTransform());
+                    newOption.SetData(chest);
+                    optionList.Add(newOption);
+                }
             }
+            else
+            {
+                _undoGemUnlockView.ToggleNoDataMessageUI(true);
+            }
+           
         }
 
         public void HideUndoGemUnlockPanel()
