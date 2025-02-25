@@ -1,11 +1,10 @@
-using ChestSystem.Chest;
-using ChestSystem.Main;
-using ChestSystem.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ChestSystem.Chest;
+using ChestSystem.UI;
 
-namespace ChestSystem.ChestSlot
+namespace ChestSystem.UI
 {
     public class UIService
     {
@@ -66,5 +65,4 @@ namespace ChestSystem.ChestSlot
 
         public Transform GetSlotContainerTransform { get { return _uiView.GetSlotContainerTransform; } private set { } }
     }
-
 }

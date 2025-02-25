@@ -1,12 +1,9 @@
-using ChestSystem.Main;
-using ChestSystem.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using ChestSystem.Chest;
-using ChestSystem.ChestSlot;
+using ChestSystem.Main;
 using ChestSystem.Sound;
 
 namespace ChestSystem.UI
@@ -23,11 +20,13 @@ namespace ChestSystem.UI
         {
             SetListeners();
         }
+
         public void SetListeners()
         {
             _generateChestsButton.onClick.AddListener(GenerateButtonClicked);
             _UndoOptionButton.onClick.AddListener(UndoOptionButtonClicked);
         }
+
         public void GenerateButtonClicked()
         {
             GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);

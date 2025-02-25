@@ -47,5 +47,4 @@ namespace ChestSystem.UI
             _acknowledgementContainer.SetActive(false);          
         }
     }
-
 }
