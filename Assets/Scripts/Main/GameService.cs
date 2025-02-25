@@ -24,7 +24,7 @@ namespace ChestSystem.Main
 
         [SerializeField] private int _chestSlotCount;
 
-        [Header("Views")]
+        [Header("Views/Prefabs")]
         [SerializeField] private ChestView _chestPrefab;
         [SerializeField] private ChestSlotView _chestSlotPrefab;
         [SerializeField] private UIView _uiPrefab;
@@ -65,10 +65,25 @@ namespace ChestSystem.Main
             _uiService.Initialize();
         }
 
+        public void GenerateChest()
+        {
+            ChestSlotController chestSlot = _chestSlotService.GetVacantSlot();
+
+            if (chestSlot != null)
+            {
+                ChestController chest = _chestService.GenerateRandomChest();
+                chest.Configure(chestSlot);
+                chestSlot.AddChestToSlot(chest);
+                chestSlot.SetSlotState(ChestSlotStates.OCCUPIED);
+            }
+            else
+            {
+                _uiService.ShowNotificationPopUp(NotificationType.SlotNotAvailable);
+            }
+
+        }
+
         public Transform GetCanvasTransform { get { return _canvasTransform; } private set { } }
-
-        public Transform GetSlotContentTransform { get { return _canvasTransform; } private set { } }
-
         public ChestService GetChestService() => _chestService;
         public ChestSlotService GetChestSlotService() => _chestSlotService;
         public UnlockingQueueService GetUnlockingQueueService() => _unlockingQueueService;
@@ -76,20 +91,6 @@ namespace ChestSystem.Main
         public CurrencyService GetCurrencyService() => _currencyService;
         public CommandInvoker GetCommandInvoker() => _commandInvoker;
         public RefundGemService GetRefundGemService() => _refundGemService;
-
-        public void GenerateChest()
-        {
-            ChestSlotController chestSlot = _chestSlotService.GetVacantSlot();
-
-            if (chestSlot!=null)
-            {
-                ChestController chest = _chestService.GenerateRandomChest();
-                chest.Configure(chestSlot);
-                chestSlot.AddChestToSlot(chest);
-                chestSlot.SetSlotState(ChestSlotStates.OCCUPIED);
-            }
-
-        }
 
     }
 

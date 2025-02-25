@@ -7,6 +7,7 @@ namespace ChestSystem.ChestSlot
     public class ChestSlotService
     {
         private List<ChestSlotController> _chestSlotList;
+
         public ChestSlotService(ChestSlotView chestSlotPrefab, int slotCount)
         {
             _chestSlotList = new List<ChestSlotController>(slotCount);
@@ -31,6 +32,7 @@ namespace ChestSystem.ChestSlot
         {
             return _chestSlotList.Count;
         }
+
         public ChestSlotController GetVacantSlot()
         {
             foreach (ChestSlotController slot in _chestSlotList)

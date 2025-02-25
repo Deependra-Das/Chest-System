@@ -81,10 +81,13 @@ namespace ChestSystem.Chest
 
             GameService.Instance.GetCommandInvoker().RemoveCommandFromRegistry(this);
 
+            GameService.Instance.GetUIService().ShowAcknowledmentPopUp(this, coinsDrop, gemsDrop);
+
             _chestView.gameObject.SetActive(false);
             _chestView.gameObject.transform.SetParent(GameService.Instance.GetCanvasTransform);
             _chestSlotController.SetSlotState(ChestSlotStates.UNOCCUPIED);
             _chestSlotController = null;
+
             GameService.Instance.GetChestService().ReturnChestToPool(this);
         }
 

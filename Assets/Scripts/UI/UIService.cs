@@ -23,6 +23,7 @@ namespace ChestSystem.ChestSlot
             _acknowledgementView = GameObject.Instantiate(acknowledgementPrefab, _canvasTransform);
             _confirmationView = GameObject.Instantiate(confirmationPrefab, _canvasTransform);
             _actionView = GameObject.Instantiate(actionPrefab, _canvasTransform);
+            _notificationView = GameObject.Instantiate(notificationPrefab, _canvasTransform);
         }
 
         public void Initialize()
@@ -36,6 +37,7 @@ namespace ChestSystem.ChestSlot
             _acknowledgementView.HideAcknowledgementPopUp();
             _confirmationView.HideConfirmationPopUp();
             _actionView.HideActionPopUp();
+            _notificationView.HideNotificationPopUp();
         }
 
         public void ShowAcknowledmentPopUp(ChestController chest, int coinDrop, int gemDrop)
@@ -49,10 +51,17 @@ namespace ChestSystem.ChestSlot
             _confirmationView.SetConfirmationContent(chestController, type);
             _confirmationView.ShowConfirmationPopUp();
         }
+
         public void ShowActionPopUp(ChestController chestController)
         {
             _actionView.SetActionPopUpContent(chestController);
             _actionView.ShowActionPopUp();
+        }
+
+        public void ShowNotificationPopUp(NotificationType type)
+        {
+            _notificationView.SetNotificationContent(type);
+            _notificationView.ShowNotificationPopUp();
         }
 
         public Transform GetSlotContainerTransform { get { return _uiView.GetSlotContainerTransform; } private set { } }

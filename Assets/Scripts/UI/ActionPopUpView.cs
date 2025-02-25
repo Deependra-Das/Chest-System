@@ -71,7 +71,7 @@ namespace ChestSystem.UI
             }
             else
             {
-                Debug.Log("Not Enough Gems");
+                GameService.Instance.GetUIService().ShowNotificationPopUp(NotificationType.InsufficientGem);
             }
            
             HideActionPopUp();
