@@ -1,9 +1,7 @@
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ChestSystem.Chest;
-using ChestSystem.Main;
 
 namespace ChestSystem.Commands
 {
