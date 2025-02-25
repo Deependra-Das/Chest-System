@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Rare_Chest_SO
   m_EditorClassIdentifier: 
   chestType: 1
-  chestLockedImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  chestUnlockedImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  chestLockedImage: {fileID: -6360714804597780752, guid: da5708a06e9d0c646b88eb6f4b4d0c4b, type: 3}
+  chestUnlockedImage: {fileID: -243010061281384432, guid: 0eb243ae98c38ea4e8fc5bd09ef50e9b, type: 3}
   unlockDuration: 30
   gemsCost: 0
   coinsMinDrop: 300

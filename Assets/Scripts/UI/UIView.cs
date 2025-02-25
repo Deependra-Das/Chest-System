@@ -11,7 +11,7 @@ using ChestSystem.Sound;
 
 namespace ChestSystem.UI
 {
-    public class UIView : GenericMonoSingleton<UIView>
+    public class UIView : MonoBehaviour
     {
         [SerializeField] private Button _generateChestsButton;
         [SerializeField] private Button _UndoOptionButton;

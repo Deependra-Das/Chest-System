@@ -45,7 +45,7 @@ namespace ChestSystem.UI
                     _confirmButton.onClick.AddListener(UnlockActionClicked);
                     break;
                 case ConfirmationType.Queuing:
-                    _confirmationMessageText.text = "Only one chest can be unlocking at a time. Do you want to queue this chest for unlocking ?";
+                    _confirmationMessageText.text = "Only one chest can be unlocking at a time.<br>Do you want to queue this chest for unlocking ?";
                     _confirmButton.onClick.AddListener(QueueActionClicked);
                     break;
                 case ConfirmationType.UnlockWithGems:
@@ -53,7 +53,7 @@ namespace ChestSystem.UI
                     _confirmButton.onClick.AddListener(GemUnlockActionClicked);
                     break;
                 case ConfirmationType.UndoGemSpent:
-                    _confirmationMessageText.text = "Do you want to get back " + chestController.GetChestModel.GemsCost.ToString() + " gems spent on Unlocking this chest ? Note: This will Re-Lock the Chest";
+                    _confirmationMessageText.text = "Do you want to get back " + chestController.GetChestModel.GemsCost.ToString() + " gems spent on Unlocking this chest ?<br>Note: This will Re-Lock the Chest";
                     _confirmButton.onClick.AddListener(UndoGemUnlockActionClicked);
                     break;
             }

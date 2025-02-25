@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Epic_Chest_SO
   m_EditorClassIdentifier: 
   chestType: 2
-  chestLockedImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  chestUnlockedImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  chestLockedImage: {fileID: 6471305039674753242, guid: 91765bae40d8ab14e9ddcb21c0b5bfa8, type: 3}
+  chestUnlockedImage: {fileID: -7874939082782097998, guid: 6141eceb0dc6fa0469762b0941cfe52a, type: 3}
   unlockDuration: 60
   gemsCost: 0
   coinsMinDrop: 600
