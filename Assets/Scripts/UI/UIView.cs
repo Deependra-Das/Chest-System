@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using ChestSystem.Chest;
 using ChestSystem.ChestSlot;
+using ChestSystem.Sound;
 
 namespace ChestSystem.UI
 {
@@ -29,11 +30,13 @@ namespace ChestSystem.UI
         }
         public void GenerateButtonClicked()
         {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
             GameService.Instance.GenerateChest();
         }
 
         public void UndoOptionButtonClicked()
         {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
             GameService.Instance.GetRefundGemService().ShowUndoGemUnlockPanel();
         }
 

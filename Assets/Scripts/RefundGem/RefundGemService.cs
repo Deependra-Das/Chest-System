@@ -1,5 +1,6 @@
 using ChestSystem.Chest;
 using ChestSystem.Main;
+using ChestSystem.Sound;
 using ChestSystem.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,8 +39,10 @@ namespace ChestSystem.RefundGem
                 optionList.Add(newOption);
             }
         }
+
         public void HideUndoGemUnlockPanel()
         {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
             UnpopulateData();
             _undoGemUnlockView.HideUndoGemUnlockPanel();
         }

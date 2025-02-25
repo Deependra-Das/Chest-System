@@ -1,5 +1,6 @@
 using ChestSystem.ChestSlot;
 using ChestSystem.Main;
+using ChestSystem.Sound;
 using ChestSystem.UI;
 using System;
 using System.Collections;
@@ -42,6 +43,7 @@ namespace ChestSystem.Chest
 
         public void OnChestButtonClicked()
         {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ChestClick);
             _chestStateMachine.OnChestButtonClick();
         }
 

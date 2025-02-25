@@ -1,4 +1,6 @@
 using ChestSystem.Chest;
+using ChestSystem.Main;
+using ChestSystem.Sound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,24 +27,28 @@ namespace ChestSystem.Currency
         {
             _coinsOwned += amount;
             VerifyMinCurrency();
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.CurrencyGain);
         }
 
         public void SubtractCoin(int amount)
         {
             _coinsOwned -= amount;
             VerifyMinCurrency();
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.CurrencyLoss);
         }
 
         public void AddGems(int amount)
         {
             _gemsOwned += amount;
             VerifyMinCurrency();
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.GemGainLoss);
         }
 
         public void SubtractGems(int amount)
         {
             _gemsOwned -= amount;
             VerifyMinCurrency();
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.GemGainLoss);
         }
 
         private void VerifyMinCurrency()

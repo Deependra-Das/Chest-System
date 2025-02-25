@@ -8,6 +8,6 @@ namespace ChestSystem.Sound
         ChestClick,
         CurrencyGain,
         CurrencyLoss,
-        PopUp
+        GemGainLoss
     }
 }
