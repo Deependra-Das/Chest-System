@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using ChestSystem.Chest;
+using ChestSystem.Main;
+using ChestSystem.Sound;
 
 namespace ChestSystem.UI
 {
@@ -26,12 +28,18 @@ namespace ChestSystem.UI
         private void SetListeners()
         {
             _acknowledgementButton.onClick.RemoveAllListeners();
-            _acknowledgementButton.onClick.AddListener(HideAcknowledgementPopUp);
+            _acknowledgementButton.onClick.AddListener(AcknowledgementButtonClicked);
         }
 
         public void ShowAcknowledgementPopUp()
         {
             _acknowledgementContainer.SetActive(true);
+        }
+
+        private void AcknowledgementButtonClicked()
+        {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
+            HideAcknowledgementPopUp();
         }
 
         public void HideAcknowledgementPopUp()

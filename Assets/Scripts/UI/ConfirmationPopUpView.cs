@@ -6,6 +6,7 @@ using TMPro;
 using ChestSystem.Chest;
 using ChestSystem.Main;
 using ChestSystem.Commands;
+using ChestSystem.Sound;
 
 namespace ChestSystem.UI
 {
@@ -35,7 +36,7 @@ namespace ChestSystem.UI
 
             _confirmButton.onClick.RemoveAllListeners();
             _cancelButton.onClick.RemoveAllListeners();
-            _cancelButton.onClick.AddListener(HideConfirmationPopUp);
+            _cancelButton.onClick.AddListener(CancelButtonClicked);
 
             switch (type)
             {
@@ -60,6 +61,7 @@ namespace ChestSystem.UI
 
         private void UnlockActionClicked()
         {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
             _currentChest.ChangeChestState(ChestStates.UNLOCKING);
             GameService.Instance.GetUnlockingQueueService().EnqueueChestForUnlocking(_currentChest);
             HideConfirmationPopUp();
@@ -67,6 +69,7 @@ namespace ChestSystem.UI
 
         private void QueueActionClicked()
         {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
             _currentChest.ChangeChestState(ChestStates.QUEUED);
             GameService.Instance.GetUnlockingQueueService().EnqueueChestForUnlocking(_currentChest);
             HideConfirmationPopUp();
@@ -74,7 +77,9 @@ namespace ChestSystem.UI
 
         private void GemUnlockActionClicked()
         {
-            if(GameService.Instance.GetCurrencyService().GemsOwned>=_currentChest.GetChestModel.GemsCost)
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
+
+            if (GameService.Instance.GetCurrencyService().GemsOwned>=_currentChest.GetChestModel.GemsCost)
             {
                 ICommand unlockWithGemCommand = new UnlockWithGemCommand(_currentChest);
                 GameService.Instance.GetCommandInvoker().ProcessCommand(unlockWithGemCommand);
@@ -89,6 +94,7 @@ namespace ChestSystem.UI
 
         private void UndoGemUnlockActionClicked()
         {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
             GameService.Instance.GetCommandInvoker().Undo(_currentChest);
             HideConfirmationPopUp();
         }
@@ -96,6 +102,12 @@ namespace ChestSystem.UI
         public void ShowConfirmationPopUp()
         {
             _confirmationContainer.SetActive(true);
+        }
+
+        private void CancelButtonClicked()
+        {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
+            HideConfirmationPopUp();
         }
 
         public void HideConfirmationPopUp()

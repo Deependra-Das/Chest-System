@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using ChestSystem.Chest;
 using ChestSystem.Main;
+using ChestSystem.Sound;
 
 namespace ChestSystem.UI
 {
@@ -46,11 +47,13 @@ namespace ChestSystem.UI
             _unlockWithGemsButton.onClick.AddListener(UnlockWithGemsButtonClicked);
 
             _cancelButton.onClick.RemoveAllListeners();
-            _cancelButton.onClick.AddListener(HideActionPopUp);
+            _cancelButton.onClick.AddListener(CancelButtonClicked);
         }
 
         private void StartTimerButtonClicked()
         {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
+
             if (GameService.Instance.GetUnlockingQueueService().IsUnlockingQueueEmpty())
             {
                 GameService.Instance.GetUIService().ShowConfirmationPopUp(_currentChest, ConfirmationType.StartUnlocking);
@@ -66,7 +69,9 @@ namespace ChestSystem.UI
         
         private void UnlockWithGemsButtonClicked()
         {
-            if(GameService.Instance.GetCurrencyService().GemsOwned >= _currentChest.GetChestModel.GemsCost)
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
+
+            if (GameService.Instance.GetCurrencyService().GemsOwned >= _currentChest.GetChestModel.GemsCost)
             {
                 GameService.Instance.GetUIService().ShowConfirmationPopUp(_currentChest, ConfirmationType.UnlockWithGems);
             }
@@ -75,6 +80,12 @@ namespace ChestSystem.UI
                 GameService.Instance.GetUIService().ShowNotificationPopUp(NotificationType.InsufficientGem);
             }
            
+            HideActionPopUp();
+        }
+
+        private void CancelButtonClicked()
+        {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
             HideActionPopUp();
         }
 

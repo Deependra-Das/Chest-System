@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using ChestSystem.Main;
+using ChestSystem.Sound;
 
 namespace ChestSystem.UI
 {
@@ -33,12 +35,19 @@ namespace ChestSystem.UI
         private void SetListeners()
         {
             _okButton.onClick.RemoveAllListeners();
-            _okButton.onClick.AddListener(HideNotificationPopUp);
+            _okButton.onClick.AddListener(NotificationButtonClicked);
         }
 
         public void ShowNotificationPopUp()
         {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ActionDeniedClick);
             _notificationContainer.SetActive(true);
+        }
+
+        private void NotificationButtonClicked()
+        {
+            GameService.Instance.GetSoundService().PlaySFX(SoundType.ButtonClick);
+            HideNotificationPopUp();
         }
 
         public void HideNotificationPopUp()

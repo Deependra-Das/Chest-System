@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ChestSystem.Chest
 {
-    [CreateAssetMenu(fileName = "Chest_SO", menuName = "ScriptableObject/Chest_SO")]
+    [CreateAssetMenu(fileName = "Chest_SO", menuName = "ScriptableObjects/Chest_SO")]
     public class ChestScriptableObject : ScriptableObject
     {
         [Header("Chest Properties")]
