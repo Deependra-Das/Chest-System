@@ -8,6 +8,7 @@ namespace ChestSystem.Sound
         ChestClick,
         CurrencyGain,
         CurrencyLoss,
-        GemGainLoss
+        GemGainLoss,
+        ChestUnlocked,
     }
 }

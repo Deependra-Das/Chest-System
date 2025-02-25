@@ -20,7 +20,7 @@ namespace ChestSystem.Chest
             {
                 _owner.RemoveChestFromUnlockingQueue();
             }
-      
+            GameService.Instance.GetSoundService().PlaySFX(Sound.SoundType.ChestUnlocked);
             _owner.ToggleUnlockedStateUI(true);
         }
 
