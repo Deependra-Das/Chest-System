@@ -16,6 +16,5 @@ namespace ChestSystem.Currency
             _coinsOwnedText.text = GameService.Instance.GetCurrencyService().CoinsOwned.ToString();
             _gemsOwnedText.text = GameService.Instance.GetCurrencyService().GemsOwned.ToString();
         }
-
     }
 }

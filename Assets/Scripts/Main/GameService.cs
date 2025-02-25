@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using ChestSystem.Utilities;
 using ChestSystem.Chest;
 using ChestSystem.ChestSlot;
