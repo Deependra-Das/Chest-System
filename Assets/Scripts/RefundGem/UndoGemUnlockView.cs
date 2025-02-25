@@ -1,10 +1,11 @@
+using ChestSystem.Main;
 using ChestSystem.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ChestSystem.UI
+namespace ChestSystem.RefundGem
 {
     public class UndoGemUnlockView : GenericMonoSingleton<UndoGemUnlockView>
     {
@@ -14,7 +15,7 @@ namespace ChestSystem.UI
 
         private void Start()
         {
-            _closeButton.onClick.AddListener(HideUndoGemUnlockPanel);
+            _closeButton.onClick.AddListener(GameService.Instance.GetRefundGemService().HideUndoGemUnlockPanel);
         }
 
         public void ShowUndoGemUnlockPanel()
@@ -22,11 +23,15 @@ namespace ChestSystem.UI
             _UndoGemUnlockContainer.SetActive(true);
         }
 
-        private void HideUndoGemUnlockPanel()
+        public void HideUndoGemUnlockPanel()
         {
             _UndoGemUnlockContainer.SetActive(false);
         }
 
+        public Transform GetUndoGemContentTransform()
+        {
+            return _UndoGemContentTransform;
+        }
     }
 
 }

@@ -45,9 +45,9 @@ namespace ChestSystem.ChestSlot
 
         public void ResetSlotAfterCollecting(ChestSlotController chestSlot)
         {
-            _chestSlotList.Remove(chestSlot);
-            _chestSlotList.Add(chestSlot);
-            chestSlot.GetSlotTransform().SetAsLastSibling();
+            //_chestSlotList.Remove(chestSlot);
+            //_chestSlotList.Add(chestSlot);
+            //chestSlot.GetSlotTransform().SetAsLastSibling();
         }
               
     }

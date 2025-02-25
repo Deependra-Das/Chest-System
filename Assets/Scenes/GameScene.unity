@@ -273,6 +273,7 @@ MonoBehaviour:
   _confirmationPrefab: {fileID: -1298625370837102911, guid: 0c2cb0f460317c84cbc362de3a7333a9, type: 3}
   _notificationPrefab: {fileID: -6181386163044579188, guid: f4b86f43fb860664cbd74bfb3a47006f, type: 3}
   _undoGemUnlockPrefab: {fileID: 156167837308606338, guid: d1c3724e40f53374494b17b94d6c5d97, type: 3}
+  _undoOptionView: {fileID: 7365760086952522752, guid: 15eae5f904c322746ac987d582fdc8ce, type: 3}
   _currencyPrefab: {fileID: 3954947506805499562, guid: 6f5d8f9dfeabb6c4caebb66910574985, type: 3}
   _chestSO_List:
   - {fileID: 11400000, guid: 4c122df166149894a8d865c732590ba2, type: 2}

@@ -9,47 +9,74 @@ namespace ChestSystem.ChestSlot
 {
     public class UnlockingQueueService
     {
-        private Queue<ChestSlotController> slotQueue;
+        private Queue<ChestController> chestQueue;
         private bool _isProcessing;
+        private int _maxQueueSize;
 
-        public UnlockingQueueService(int slotQueueSize)
+        public UnlockingQueueService(int queueSize)
         {
-            slotQueue = new Queue<ChestSlotController>(slotQueueSize);
+            chestQueue = new Queue<ChestController>();
+            _maxQueueSize = queueSize;
             _isProcessing = false;
         }
 
-        public void EnqueueChestForUnlocking(ChestSlotController chestSlot)
+        public void EnqueueChestForUnlocking(ChestController chestSlot)
         {
-            slotQueue.Enqueue(chestSlot);
+            chestQueue.Enqueue(chestSlot);
+            UpdateUnlockingSlotQueue();
         }
 
         public void UpdateUnlockingSlotQueue()
         {
-            ProcessNextChestSlot();
-        }
-
-        public void ProcessNextChestSlot()
-        {
-            if (slotQueue.Count > 0 && _isProcessing == false)
+            if (chestQueue.Count > 0 && _isProcessing == false)
             {
-                ChestSlotController FrontChestInQueue = slotQueue.Peek();
-                FrontChestInQueue.GetChestStoredInSlot().ChangeChestState(ChestStates.UNLOCKING);
-                _isProcessing = true;
+                ChestController frontChestInQueue = chestQueue.Peek();
+
+                if (frontChestInQueue.GetCurrentChestState() == ChestStates.UNLOCKING)
+                {
+                    ProcessCurrentChestSlot();
+                }
+                else if (frontChestInQueue.GetCurrentChestState() == ChestStates.QUEUED)
+                {
+                    PrepareNextChestSlot();
+                }
             }
         }
-        public void DeqeueChestAfterUnlocking()
+
+        public void ProcessCurrentChestSlot()
         {
-            slotQueue.Dequeue();
-            _isProcessing = false;
+            _isProcessing = true;
         }
 
-        public bool IsUnlockingSlotQueueEmpty()
+        public void PrepareNextChestSlot()
         {
-            if(slotQueue.Count > 0)
+            ChestController frontChestInQueue = chestQueue.Peek();
+            frontChestInQueue.ChangeChestState(ChestStates.UNLOCKING);
+        }
+
+        public void DeqeueChestAfterUnlocking()
+        {
+            chestQueue.Dequeue();
+            _isProcessing = false;
+            UpdateUnlockingSlotQueue();
+        }
+
+        public bool IsUnlockingQueueEmpty()
+        {
+            if(chestQueue.Count > 0)
             {
                 return false;
             }
             return true;
+        }
+
+        public bool IsUnlockingQueueFull()
+        {
+            if (chestQueue.Count == _maxQueueSize)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

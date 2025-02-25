@@ -13,16 +13,14 @@ namespace ChestSystem.ChestSlot
         private AcknowledgementPopUpView _acknowledgementView;
         private ConfirmationPopUpView _confirmationView;
         private NotificationPopUpView _notificationView;
-        private UndoGemUnlockView _undoGemUnlockView;
         private Transform _canvasTransform;
 
-        public UIService(UIView uiPrefab, AcknowledgementPopUpView acknowledgementPrefab, ConfirmationPopUpView confirmationPrefab, NotificationPopUpView notificationPrefab, UndoGemUnlockView undoGemUnlockPrefab, Transform canvasTransform)
+        public UIService(UIView uiPrefab, AcknowledgementPopUpView acknowledgementPrefab, ConfirmationPopUpView confirmationPrefab, NotificationPopUpView notificationPrefab, Transform canvasTransform)
         {
             _canvasTransform = canvasTransform;
             _uiView = GameObject.Instantiate(uiPrefab, _canvasTransform);
             _acknowledgementView = GameObject.Instantiate(acknowledgementPrefab, _canvasTransform);
             _confirmationView = GameObject.Instantiate(confirmationPrefab, _canvasTransform);
-            _undoGemUnlockView = GameObject.Instantiate(undoGemUnlockPrefab, _canvasTransform);
         }
 
         public void Initialize()
@@ -33,7 +31,6 @@ namespace ChestSystem.ChestSlot
 
         private void InitializePopUps()
         {
-            _undoGemUnlockView.gameObject.SetActive(false);
             _acknowledgementView.gameObject.SetActive(false);
             _confirmationView.gameObject.SetActive(false);
         }
@@ -44,9 +41,9 @@ namespace ChestSystem.ChestSlot
             _acknowledgementView.ShowAcknowledgementPopUp();
         }
 
-        public void ShowConfirmationPopUp(ChestController chestController, ChestModel chestModel, ChestStates state, ConfirmationType type)
+        public void ShowConfirmationPopUp(ChestController chestController, ConfirmationType type)
         {
-            _confirmationView.SetConfirmationContent(chestController, chestModel, state, type);
+            _confirmationView.SetConfirmationContent(chestController, type);
             _confirmationView.ShowConfirmationPopUp();
         }
 

@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 8003853545097047528}
   - component: {fileID: 202935830884477358}
   m_Layer: 5
-  m_Name: GemsCoinText
+  m_Name: PossibleGemsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -849,6 +849,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8de2ba32ff40ad4784b18fb8632d199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _chestImage: {fileID: 4699966040870962555}
+  _chestTypeText: {fileID: 7676421354429751656}
+  _coinImage: {fileID: 0}
+  _gemImage: {fileID: 0}
+  _possibleCoinsText: {fileID: 3733194631360143419}
+  _possibleGemsText: {fileID: 202935830884477358}
+  _UndoButton: {fileID: 7738968452815883184}
 --- !u!1 &6108301175669412115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,7 +1270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777121161664253693, guid: f2d75c2f8d144804c82d834c7b185289, type: 3}
       propertyPath: m_Name
-      value: PrimaryButton
+      value: UndoButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1275,3 +1282,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1309993246959345485, guid: f2d75c2f8d144804c82d834c7b185289, type: 3}
   m_PrefabInstance: {fileID: 8722154493807765963}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7738968452815883184 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1327725723317084795, guid: f2d75c2f8d144804c82d834c7b185289, type: 3}
+  m_PrefabInstance: {fileID: 8722154493807765963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

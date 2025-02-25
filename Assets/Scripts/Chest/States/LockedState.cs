@@ -23,7 +23,7 @@ namespace ChestSystem.Chest
 
         public void OnChestButtonClick()
         {
-            if(_owner.IsUnlockingSlotQueueEmpty())
+            if(_owner.IsUnlockingQueueEmpty())
             {
                 _owner.ShowConfirmationPopUp(ConfirmationType.StartUnlocking);
             }

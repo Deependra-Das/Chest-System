@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using ChestSystem.Chest;
+using ChestSystem.Main;
+using ChestSystem.Commands;
 
 namespace ChestSystem.UI
 {
@@ -21,19 +23,20 @@ namespace ChestSystem.UI
         [SerializeField] private Button _cancelButton;
 
         private ChestController _currentChest;
+
         private void Start()
         {
             _cancelButton.onClick.AddListener(HideConfirmationPopUp);
         }
 
-        public void SetConfirmationContent(ChestController chestController, ChestModel chestModel,ChestStates state, ConfirmationType type)
+        public void SetConfirmationContent(ChestController chestController, ConfirmationType type)
         {
             _currentChest = chestController;
-            _chestImage.sprite = chestModel.ChestLockedImage;
+            _chestImage.sprite = chestController.GetChestModel.ChestLockedImage;
 
-            _chestTypeText.text = chestModel.ChestType.ToString()+" : "+ state.ToString();
-            _possiblecoinsText.text = chestModel.CoinsMinDrop.ToString()+"-"+ chestModel.CoinsMaxDrop.ToString();
-            _possiblegemsText.text = chestModel.GemsMinDrop.ToString()+"-"+chestModel.GemsMaxDrop.ToString();
+            _chestTypeText.text = chestController.GetChestModel.ChestType.ToString()+" : "+ chestController.GetCurrentChestState().ToString();
+            _possiblecoinsText.text = chestController.GetChestModel.CoinsMinDrop.ToString()+"-"+ chestController.GetChestModel.CoinsMaxDrop.ToString();
+            _possiblegemsText.text = chestController.GetChestModel.GemsMinDrop.ToString()+"-"+chestController.GetChestModel.GemsMaxDrop.ToString();
 
             _confirmButton.onClick.RemoveAllListeners();
 
@@ -48,31 +51,40 @@ namespace ChestSystem.UI
                     _confirmButton.onClick.AddListener(QueueActionClicked);
                     break;
                 case ConfirmationType.UnlockWithGems:
-                    _confirmationMessageText.text = "Do you want to spend "+chestModel.GemsCost.ToString()+" gems to unlock it ?";
+                    _confirmationMessageText.text = "Do you want to spend "+chestController.GetChestModel.GemsCost.ToString()+" gems to unlock it ?";
                     _confirmButton.onClick.AddListener(GemUnlockActionClicked);
                     break;
                 case ConfirmationType.UndoGemSpent:
-                    _confirmationMessageText.text = "Do you want to get back " + chestModel.GemsCost.ToString() + " gems spent on Unlocking this chest ? Note: This will Re-Lock the Chest";
+                    _confirmationMessageText.text = "Do you want to get back " + chestController.GetChestModel.GemsCost.ToString() + " gems spent on Unlocking this chest ? Note: This will Re-Lock the Chest";
+                    _confirmButton.onClick.AddListener(UndoGemUnlockActionClicked);
                     break;
-
             }
-         
         }
 
         private void UnlockActionClicked()
         {
             _currentChest.ChangeChestState(ChestStates.UNLOCKING);
+            GameService.Instance.GetUnlockingQueueService().EnqueueChestForUnlocking(_currentChest);
             HideConfirmationPopUp();
         }
 
         private void QueueActionClicked()
         {
             _currentChest.ChangeChestState(ChestStates.QUEUED);
+            GameService.Instance.GetUnlockingQueueService().EnqueueChestForUnlocking(_currentChest);
             HideConfirmationPopUp();
         }
+
         private void GemUnlockActionClicked()
         {
-            _currentChest.ChangeChestState(ChestStates.UNLOCKED);
+            ICommand unlockWithGemCommand = new UnlockWithGemCommand(_currentChest);
+            GameService.Instance.GetCommandInvoker().ProcessCommand(unlockWithGemCommand);
+            HideConfirmationPopUp();
+        }
+
+        private void UndoGemUnlockActionClicked()
+        {
+            GameService.Instance.GetCommandInvoker().Undo(_currentChest);
             HideConfirmationPopUp();
         }
 

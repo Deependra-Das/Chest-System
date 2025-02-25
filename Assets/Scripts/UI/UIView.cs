@@ -25,10 +25,16 @@ namespace ChestSystem.UI
         public void SetListeners()
         {
             _generateChestsButton.onClick.AddListener(GenerateButtonClicked);
+            _UndoOptionButton.onClick.AddListener(UndoOptionButtonClicked);
         }
         public void GenerateButtonClicked()
         {
             GameService.Instance.GenerateChest();
+        }
+
+        public void UndoOptionButtonClicked()
+        {
+            GameService.Instance.GetRefundGemService().ShowUndoGemUnlockPanel();
         }
 
     }
