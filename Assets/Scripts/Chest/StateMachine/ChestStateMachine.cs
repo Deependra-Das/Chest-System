@@ -9,6 +9,7 @@ namespace ChestSystem.Chest
     public class ChestStateMachine
     {
         protected IChestState _currentState;
+        protected IChestState _previousState;
         protected Dictionary<ChestStates, IChestState> _states = new Dictionary<ChestStates, IChestState>();
         protected ChestController _owner;
 
@@ -38,6 +39,7 @@ namespace ChestSystem.Chest
 
         private void ChangeState(IChestState newState)
         {
+            _previousState = _currentState;
             _currentState?.OnStateExit();
             _currentState = newState;
             _currentState.OnStateEnter();
@@ -48,6 +50,16 @@ namespace ChestSystem.Chest
             foreach (var state in _states)
             {
                 if (state.Value == _currentState)
+                    return state.Key;
+            }
+            return ChestStates.LOCKED;
+        }
+
+        public ChestStates GetPreviousState()
+        {
+            foreach (var state in _states)
+            {
+                if (state.Value == _previousState)
                     return state.Key;
             }
             return ChestStates.LOCKED;
