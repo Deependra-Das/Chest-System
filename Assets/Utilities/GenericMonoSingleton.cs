@@ -5,6 +5,7 @@ namespace ChestSystem.Utilities
     public class GenericMonoSingleton<T> : MonoBehaviour where T : GenericMonoSingleton<T>
     {
         private static T _instance;
+
         public static T Instance { get { return _instance; } }
 
         protected virtual void Awake()
@@ -18,5 +19,6 @@ namespace ChestSystem.Utilities
                 Destroy(this);
             }
         }
+
     }
 }
