@@ -19,7 +19,9 @@ namespace ChestSystem.Commands
         }
 
         public void ExecuteCommand(ICommand commandToExecute) => commandToExecute.Execute();
+        
         public void RegisterCommand(ICommand commandToRegister) => _commandRegistry.Add(commandToRegister);
+
         public void Undo(ChestController controller)
         {
             for (int i = _commandRegistry.Count - 1; i >= 0; i--)
@@ -30,12 +32,9 @@ namespace ChestSystem.Commands
                 {
                     command.Undo();
                     _commandRegistry.RemoveAt(i);
-                    Debug.Log($"Undo command was sucessful");
                     return;
                 }
             }
-
-            Debug.Log($"No command found for the chest to undo.");
         }
 
         public void RemoveCommandFromRegistry(ChestController controller)
@@ -47,13 +46,11 @@ namespace ChestSystem.Commands
                 if (command.GetChestController() == controller)
                 {
                     _commandRegistry.RemoveAt(i);
-                    Debug.Log($"Removed command");
                     return;
                 }
             }
-
-            Debug.Log($"No command found for the chest to remove.");
         }
+        
         public void PrintRegistry()
         {
             Debug.Log("Command History:");

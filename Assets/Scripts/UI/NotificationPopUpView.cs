@@ -1,18 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class NotificationPopUpView : MonoBehaviour
+namespace ChestSystem.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class NotificationPopUpView : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private GameObject _notificationContainer;
+        [SerializeField] private TextMeshProUGUI _notificationMessageText;
+        [SerializeField] private Button _okButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void SetNotificationContent(NotificationType type)
+        {
+            switch(type)
+            {
+                case NotificationType.InsufficientGem:
+                    _notificationMessageText.text = "You don't have sufficient Gems for this Action";
+                    break;
+                case NotificationType.SlotNotAvailable:
+                    _notificationMessageText.text = "All the slots are Occupied. Unlock & Collect a Chest to free one of the slots";
+                    break;
+                case NotificationType.AlreadyQueued:
+                    _notificationMessageText.text = "This Chest is already Queued for Unlocking with Timer.";
+                    break;
+
+            }
+            SetListeners();
+        }
+
+        private void SetListeners()
+        {
+            _okButton.onClick.RemoveAllListeners();
+            _okButton.onClick.AddListener(HideNotificationPopUp);
+        }
+
+        public void ShowNotificationPopUp()
+        {
+            _notificationContainer.SetActive(true);
+        }
+
+        public void HideNotificationPopUp()
+        {
+            _notificationContainer.SetActive(false);
+        }
     }
 }
+

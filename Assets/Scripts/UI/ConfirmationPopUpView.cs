@@ -24,11 +24,6 @@ namespace ChestSystem.UI
 
         private ChestController _currentChest;
 
-        private void Start()
-        {
-            _cancelButton.onClick.AddListener(HideConfirmationPopUp);
-        }
-
         public void SetConfirmationContent(ChestController chestController, ConfirmationType type)
         {
             _currentChest = chestController;
@@ -39,6 +34,8 @@ namespace ChestSystem.UI
             _possiblegemsText.text = chestController.GetChestModel.GemsMinDrop.ToString()+"-"+chestController.GetChestModel.GemsMaxDrop.ToString();
 
             _confirmButton.onClick.RemoveAllListeners();
+            _cancelButton.onClick.RemoveAllListeners();
+            _cancelButton.onClick.AddListener(HideConfirmationPopUp);
 
             switch (type)
             {
@@ -77,8 +74,16 @@ namespace ChestSystem.UI
 
         private void GemUnlockActionClicked()
         {
-            ICommand unlockWithGemCommand = new UnlockWithGemCommand(_currentChest);
-            GameService.Instance.GetCommandInvoker().ProcessCommand(unlockWithGemCommand);
+            if(GameService.Instance.GetCurrencyService().GemsOwned>=_currentChest.GetChestModel.GemsCost)
+            {
+                ICommand unlockWithGemCommand = new UnlockWithGemCommand(_currentChest);
+                GameService.Instance.GetCommandInvoker().ProcessCommand(unlockWithGemCommand);
+            }
+            else
+            {
+                GameService.Instance.GetUIService().ShowNotificationPopUp(NotificationType.InsufficientGem);
+            }
+    
             HideConfirmationPopUp();
         }
 
@@ -93,7 +98,7 @@ namespace ChestSystem.UI
             _confirmationContainer.SetActive(true);
         }
 
-        private void HideConfirmationPopUp()
+        public void HideConfirmationPopUp()
         {
             _confirmationContainer.SetActive(false);
         }

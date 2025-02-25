@@ -24,13 +24,14 @@ namespace ChestSystem.Main
 
         [SerializeField] private int _chestSlotCount;
 
-        [Header("Views")]
+        [Header("Views/Prefabs")]
         [SerializeField] private ChestView _chestPrefab;
         [SerializeField] private ChestSlotView _chestSlotPrefab;
         [SerializeField] private UIView _uiPrefab;
         [SerializeField] private AcknowledgementPopUpView _acknowledgementPrefab;
         [SerializeField] private ConfirmationPopUpView _confirmationPrefab;
         [SerializeField] private NotificationPopUpView _notificationPrefab;
+        [SerializeField] private ActionPopUpView _actionPrefab;
         [SerializeField] private UndoGemUnlockView _undoGemUnlockPrefab;
         [SerializeField] private UndoOptionView _undoOptionView;
         [SerializeField] private CurrencyView _currencyPrefab;
@@ -50,7 +51,7 @@ namespace ChestSystem.Main
         {
             _commandInvoker = new CommandInvoker();
             _currencyService = new CurrencyService(_currencyPrefab, _canvasTransform);
-            _uiService = new UIService(_uiPrefab, _acknowledgementPrefab, _confirmationPrefab, _notificationPrefab, _canvasTransform);
+            _uiService = new UIService(_uiPrefab, _acknowledgementPrefab, _confirmationPrefab, _notificationPrefab, _actionPrefab, _canvasTransform);
             _chestService = new ChestService(_chestSO_List,_chestPrefab);
             _chestSlotService = new ChestSlotService(_chestSlotPrefab, _chestSlotCount);
             _unlockingQueueService = new UnlockingQueueService(_chestSlotCount);
@@ -64,32 +65,47 @@ namespace ChestSystem.Main
             _uiService.Initialize();
         }
 
-        public Transform GetCanvasTransform { get { return _canvasTransform; } private set { } }
-
-        public Transform GetSlotContentTransform { get { return _canvasTransform; } private set { } }
-
-        public ChestService GetChestService() => _chestService;
-        public ChestSlotService GetChestSlotService() => _chestSlotService;
-        public UnlockingQueueService GetUnlockingQueueService() => _unlockingQueueService;
-        public UIService GetUIService() => _uiService;
-        public CurrencyService GetCurrencyService() => _currencyService;
-        public CommandInvoker GetCommandInvoker() => _commandInvoker;
-        public RefundGemService GetRefundGemService() => _refundGemService;
-
         public void GenerateChest()
         {
             ChestSlotController chestSlot = _chestSlotService.GetVacantSlot();
 
-            if (chestSlot!=null)
+            if (chestSlot != null)
             {
                 ChestController chest = _chestService.GenerateRandomChest();
                 chest.Configure(chestSlot);
                 chestSlot.AddChestToSlot(chest);
                 chestSlot.SetSlotState(ChestSlotStates.OCCUPIED);
             }
-
+            else
+            {
+                _uiService.ShowNotificationPopUp(NotificationType.SlotNotAvailable);
+            }
         }
 
+        public Transform GetCanvasTransform { get { return _canvasTransform; } private set { } }
+
+        public ChestService GetChestService() => _chestService;
+
+        public ChestSlotService GetChestSlotService() => _chestSlotService;
+
+        public UnlockingQueueService GetUnlockingQueueService() => _unlockingQueueService;
+
+        public UIService GetUIService() => _uiService;
+
+        public CurrencyService GetCurrencyService() => _currencyService;
+
+        public CommandInvoker GetCommandInvoker() => _commandInvoker;
+
+        public RefundGemService GetRefundGemService() => _refundGemService;
+
+        public string FormatTime(int minutes)
+        {
+            int hours = minutes / 60;
+            int remainingMinutes = minutes % 60;
+            string formattedTime = string.Format("{0:D2}h {1:D2}m", hours, remainingMinutes);
+
+            return formattedTime;
+        }
     }
 
 }

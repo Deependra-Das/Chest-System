@@ -81,10 +81,13 @@ namespace ChestSystem.Chest
 
             GameService.Instance.GetCommandInvoker().RemoveCommandFromRegistry(this);
 
+            GameService.Instance.GetUIService().ShowAcknowledmentPopUp(this, coinsDrop, gemsDrop);
+
             _chestView.gameObject.SetActive(false);
             _chestView.gameObject.transform.SetParent(GameService.Instance.GetCanvasTransform);
             _chestSlotController.SetSlotState(ChestSlotStates.UNOCCUPIED);
             _chestSlotController = null;
+
             GameService.Instance.GetChestService().ReturnChestToPool(this);
         }
 
@@ -118,14 +121,19 @@ namespace ChestSystem.Chest
             GameService.Instance.GetChestSlotService().ResetSlotAfterCollecting(_chestSlotController);
         }
 
-        public bool IsUnlockingQueueEmpty()
-        {
-            return GameService.Instance.GetUnlockingQueueService().IsUnlockingQueueEmpty();
-        }
-
         public void ShowConfirmationPopUp(ConfirmationType type)
         {
             GameService.Instance.GetUIService().ShowConfirmationPopUp(this, type);
+        }
+
+        public void ShowActionPopUp()
+        {
+            GameService.Instance.GetUIService().ShowActionPopUp(this);
+        }
+
+        public void ShowQueuedNotificationPopUp()
+        {
+            GameService.Instance.GetUIService().ShowNotificationPopUp(NotificationType.AlreadyQueued);
         }
 
         public ChestStates GetCurrentChestState()

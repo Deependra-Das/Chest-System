@@ -27,7 +27,7 @@ namespace ChestSystem.Chest
         public void Update()
         {
             timer -= Time.deltaTime;
-            //_owner.UpdateUnlockingTimerText(timer/60);
+            //_owner.UpdateUnlockingTimerText(timer/60); //Removed For Testing Purposes
             _owner.UpdateGemCost(timer);
             _owner.UpdateUnlockingTimerText(timer);
 
@@ -48,7 +48,7 @@ namespace ChestSystem.Chest
             timer = 0;
         }
 
-        private void ResetTimer() => timer = _owner.GetChestModel.UnlockDuration /* * 60*/;
+        private void ResetTimer() => timer = _owner.GetChestModel.UnlockDuration /* *60*/; //Removed For Testing Purposes 
     }
 
 }

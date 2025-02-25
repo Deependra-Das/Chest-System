@@ -17,20 +17,14 @@ namespace ChestSystem.Chest
         public void OnStateEnter()
         {
             _owner.ToggleLockedStateUI(true);
+            _owner.UpdateGemCost(_owner.GetChestModel.UnlockDuration);
         }
 
         public void Update() { }
 
         public void OnChestButtonClick()
         {
-            if(_owner.IsUnlockingQueueEmpty())
-            {
-                _owner.ShowConfirmationPopUp(ConfirmationType.StartUnlocking);
-            }
-            else
-            {
-                _owner.ShowConfirmationPopUp(ConfirmationType.Queuing);
-            }            
+            _owner.ShowActionPopUp();
         }
 
         public void OnStateExit()

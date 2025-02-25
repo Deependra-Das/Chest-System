@@ -20,6 +20,7 @@ namespace ChestSystem.Chest
 
         public void OnChestButtonClick()
         {
+            _owner.ShowQueuedNotificationPopUp();
         }
 
         public void OnStateExit()
