@@ -1232,6 +1232,7 @@ MonoBehaviour:
   _chestTypeText: {fileID: 0}
   _possiblecoinsText: {fileID: 0}
   _possiblegemsText: {fileID: 0}
+  _timerButtonText: {fileID: 0}
   _unlockButtonText: {fileID: 0}
   _startTimerButton: {fileID: 0}
   _unlockWithGemsButton: {fileID: 0}
@@ -1755,6 +1756,7 @@ MonoBehaviour:
   _chestTypeText: {fileID: 7154026646468674207}
   _possiblecoinsText: {fileID: 1942834083894607519}
   _possiblegemsText: {fileID: 8475359230477608044}
+  _timerButtonText: {fileID: 9050337688690883296}
   _unlockButtonText: {fileID: 6082171957702298359}
   _startTimerButton: {fileID: 1652559062009710733}
   _unlockWithGemsButton: {fileID: 4548183384987203738}
@@ -2193,3 +2195,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2175485742955439019, guid: 84b741a913b26e047b2e6d5bc2e3ba0b, type: 3}
   m_PrefabInstance: {fileID: 4024557432410670348}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9050337688690883296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5351221405801316332, guid: 84b741a913b26e047b2e6d5bc2e3ba0b, type: 3}
+  m_PrefabInstance: {fileID: 4024557432410670348}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

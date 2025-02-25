@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ChestSystem.Main;
 
 namespace ChestSystem.Chest
 {
@@ -56,19 +57,10 @@ namespace ChestSystem.Chest
         public void SetChestDataOnUI()
         {
             _chestImage.sprite = _chestController.GetChestModel.ChestLockedImage;
-            _lockedDurationText.text = FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
-            _unlockingTimerText.text = FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
-            _queuedDurationText.text = FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
+            _lockedDurationText.text = GameService.Instance.FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
+            _unlockingTimerText.text = GameService.Instance.FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
+            _queuedDurationText.text = GameService.Instance.FormatTime(_chestController.GetChestModel.UnlockDuration).ToString();
            
-        }
-
-        public string FormatTime(int minutes)
-        {
-            int hours = minutes / 60;
-            int remainingMinutes = minutes % 60;
-            string formattedTime = string.Format("{0:D2}h {1:D2}m", hours, remainingMinutes);
-
-            return formattedTime;
         }
 
         public void DisableAllStatePanels()
@@ -87,7 +79,7 @@ namespace ChestSystem.Chest
 
         public void UpdateUnlockingTimerText(float currentTimeLeft)
         {
-            _unlockingTimerText.text = FormatTime((int)currentTimeLeft);
+            _unlockingTimerText.text = GameService.Instance.FormatTime((int)currentTimeLeft);
         }
 
         public void UpdateGemCostText()

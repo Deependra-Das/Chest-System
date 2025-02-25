@@ -91,7 +91,14 @@ namespace ChestSystem.Main
         public CurrencyService GetCurrencyService() => _currencyService;
         public CommandInvoker GetCommandInvoker() => _commandInvoker;
         public RefundGemService GetRefundGemService() => _refundGemService;
+        public string FormatTime(int minutes)
+        {
+            int hours = minutes / 60;
+            int remainingMinutes = minutes % 60;
+            string formattedTime = string.Format("{0:D2}h {1:D2}m", hours, remainingMinutes);
 
+            return formattedTime;
+        }
     }
 
 }

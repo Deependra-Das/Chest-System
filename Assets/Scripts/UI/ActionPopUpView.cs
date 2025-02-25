@@ -8,7 +8,6 @@ using ChestSystem.Main;
 
 namespace ChestSystem.UI
 {
-
     public class ActionPopUpView : MonoBehaviour
     {
         [SerializeField] private GameObject _actionPopUpContainer;
@@ -16,6 +15,7 @@ namespace ChestSystem.UI
         [SerializeField] private TextMeshProUGUI _chestTypeText;
         [SerializeField] private TextMeshProUGUI _possiblecoinsText;
         [SerializeField] private TextMeshProUGUI _possiblegemsText;
+        [SerializeField] private TextMeshProUGUI _timerButtonText;
         [SerializeField] private TextMeshProUGUI _unlockButtonText;
         [SerializeField] private Button _startTimerButton;
         [SerializeField] private Button _unlockWithGemsButton;
@@ -31,7 +31,8 @@ namespace ChestSystem.UI
             _chestTypeText.text = _currentChest.GetChestModel.ChestType.ToString() + " : " + _currentChest.GetCurrentChestState().ToString();
             _possiblecoinsText.text = _currentChest.GetChestModel.CoinsMinDrop.ToString() + "-" + _currentChest.GetChestModel.CoinsMaxDrop.ToString();
             _possiblegemsText.text = _currentChest.GetChestModel.GemsMinDrop.ToString() + "-" + _currentChest.GetChestModel.GemsMaxDrop.ToString();
-
+            
+            _timerButtonText.text = "Start Unlocking with Timer ("+ GameService.Instance.FormatTime(_currentChest.GetChestModel.UnlockDuration).ToString() + ")";
             _unlockButtonText.text = "Unlock with "+ _currentChest.GetChestModel.GemsCost.ToString()+" Gems";
             SetListeners();
         }
