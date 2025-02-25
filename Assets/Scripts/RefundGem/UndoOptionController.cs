@@ -1,9 +1,8 @@
-using ChestSystem.Main;
-using ChestSystem.Chest;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ChestSystem.ChestSlot;
+using ChestSystem.Main;
+using ChestSystem.Chest;
 
 namespace ChestSystem.RefundGem
 {
@@ -36,7 +35,5 @@ namespace ChestSystem.RefundGem
             GameService.Instance.GetRefundGemService().ReturnOptionToPool(this);
         }
 
-
     }
-
 }

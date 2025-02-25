@@ -1,8 +1,7 @@
-using ChestSystem.RefundGem;
-using ChestSystem.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ChestSystem.Utilities;
 
 namespace ChestSystem.RefundGem
 {
@@ -21,5 +20,4 @@ namespace ChestSystem.RefundGem
 
         protected override UndoOptionController CreateItem<T>() => new UndoOptionController(_undoOptionPrefab, _canvasTransform);
     }
-
 }

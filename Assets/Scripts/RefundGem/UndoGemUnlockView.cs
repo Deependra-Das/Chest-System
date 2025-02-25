@@ -1,9 +1,8 @@
-using ChestSystem.Main;
-using ChestSystem.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ChestSystem.Main;
 
 namespace ChestSystem.RefundGem
 {
@@ -39,5 +38,4 @@ namespace ChestSystem.RefundGem
             _noDataMessageToggle.gameObject.SetActive(value);
         }
     }
-
 }

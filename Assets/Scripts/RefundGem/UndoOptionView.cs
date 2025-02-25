@@ -1,11 +1,11 @@
-using ChestSystem.Chest;
-using ChestSystem.Main;
-using ChestSystem.Sound;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ChestSystem.Chest;
+using ChestSystem.Main;
+using ChestSystem.Sound;
 
 namespace ChestSystem.RefundGem
 {
@@ -44,7 +44,6 @@ namespace ChestSystem.RefundGem
             GameService.Instance.GetUIService().ShowConfirmationPopUp(_currentChest, UI.ConfirmationType.UndoGemSpent);
             GameService.Instance.GetRefundGemService().HideUndoGemUnlockPanel();
         }
-        
     }
 }
 

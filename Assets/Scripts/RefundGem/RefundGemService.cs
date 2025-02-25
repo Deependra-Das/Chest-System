@@ -1,10 +1,9 @@
-using ChestSystem.Chest;
-using ChestSystem.Main;
-using ChestSystem.Sound;
-using ChestSystem.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ChestSystem.Chest;
+using ChestSystem.Main;
+using ChestSystem.Sound;
 
 namespace ChestSystem.RefundGem
 {
@@ -67,5 +66,4 @@ namespace ChestSystem.RefundGem
             }
         }
     }
-
 }
