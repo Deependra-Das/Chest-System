@@ -56,6 +56,7 @@ namespace ChestSystem.UI
                     break;
                 case ConfirmationType.UndoGemSpent:
                     _confirmationMessageText.text = "Do you want to get back " + chestController.GetChestModel.GemsCost.ToString() + " gems spent on Unlocking this chest ? Note: This will Re-Lock the Chest";
+                    _confirmButton.onClick.AddListener(UndoGemUnlockActionClicked);
                     break;
             }
         }
@@ -83,7 +84,7 @@ namespace ChestSystem.UI
 
         private void UndoGemUnlockActionClicked()
         {
-            GameService.Instance.GetCommandInvoker().RemoveCommandFromRegistry(_currentChest);
+            GameService.Instance.GetCommandInvoker().Undo(_currentChest);
             HideConfirmationPopUp();
         }
 
