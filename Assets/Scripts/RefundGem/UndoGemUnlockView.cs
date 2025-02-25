@@ -1,3 +1,4 @@
+using ChestSystem.Main;
 using ChestSystem.Utilities;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace ChestSystem.RefundGem
 
         private void Start()
         {
-            _closeButton.onClick.AddListener(HideUndoGemUnlockPanel);
+            _closeButton.onClick.AddListener(GameService.Instance.GetRefundGemService().HideUndoGemUnlockPanel);
         }
 
         public void ShowUndoGemUnlockPanel()
@@ -22,11 +23,15 @@ namespace ChestSystem.RefundGem
             _UndoGemUnlockContainer.SetActive(true);
         }
 
-        private void HideUndoGemUnlockPanel()
+        public void HideUndoGemUnlockPanel()
         {
             _UndoGemUnlockContainer.SetActive(false);
         }
 
+        public Transform GetUndoGemContentTransform()
+        {
+            return _UndoGemContentTransform;
+        }
     }
 
 }

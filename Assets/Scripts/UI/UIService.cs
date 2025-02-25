@@ -41,9 +41,9 @@ namespace ChestSystem.ChestSlot
             _acknowledgementView.ShowAcknowledgementPopUp();
         }
 
-        public void ShowConfirmationPopUp(ChestController chestController, ChestModel chestModel, ChestStates state, ConfirmationType type)
+        public void ShowConfirmationPopUp(ChestController chestController, ConfirmationType type)
         {
-            _confirmationView.SetConfirmationContent(chestController, chestModel, state, type);
+            _confirmationView.SetConfirmationContent(chestController, type);
             _confirmationView.ShowConfirmationPopUp();
         }
 

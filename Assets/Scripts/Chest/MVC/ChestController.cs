@@ -79,6 +79,8 @@ namespace ChestSystem.Chest
             GameService.Instance.GetCurrencyService().AddCoins(coinsDrop);
             GameService.Instance.GetCurrencyService().AddGems(gemsDrop);
 
+            GameService.Instance.GetCommandInvoker().RemoveCommandFromRegistry(this);
+
             _chestView.gameObject.SetActive(false);
             _chestView.gameObject.transform.SetParent(GameService.Instance.GetCanvasTransform);
             _chestSlotController.SetSlotState(ChestSlotStates.UNOCCUPIED);
@@ -123,7 +125,7 @@ namespace ChestSystem.Chest
 
         public void ShowConfirmationPopUp(ConfirmationType type)
         {
-            GameService.Instance.GetUIService().ShowConfirmationPopUp(this, _chestModel, _chestStateMachine.GetCurrentState(), type);
+            GameService.Instance.GetUIService().ShowConfirmationPopUp(this, type);
         }
 
         public ChestStates GetCurrentChestState()
