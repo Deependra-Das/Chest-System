@@ -101,10 +101,11 @@ Used for chest & audio data to allow designers to make adjustments through inspe
 
 ## Playable build
 
+https://outscal.com/iamdeep75/game/play-chest-system-v10-game
 
 ---
 
 ## Gameplay Video
 
-https://youtu.be/QaLykh2eaGI
+https://www.loom.com/share/630c9d15873c4b1f931824c7e974fac3?sid=79e44936-4bf5-492d-a9b4-9eb4ecd1152e
 
