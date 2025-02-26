@@ -10,8 +10,8 @@ The goal for the player is to navigate through the menus to generate random ches
 ## Features
 
 1. Currencies
-    Gems: Primary currency used to unlock chests instantly.
-    Coins: Secondary currency drops as chest rewards.
+    - Gems: Primary currency used to unlock chests instantly.
+    - Coins: Secondary currency drops as chest rewards.
 
 3. Chest Types
     Four types: Common, Rare, Epic, and Legendary, each with dynamic rewards and unlock timers:
