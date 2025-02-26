@@ -95,7 +95,7 @@ Used for chest & audio data to allow designers to make adjustments through inspe
 
 ## Architecture Block Diagram
 
-![image](https://github.com/user-attachments/assets/cffe2b61-3127-49a8-8d56-59f21ef21fe2)
+![image](https://github.com/user-attachments/assets/a2c68b8e-4b4d-4a07-8d93-e24547d2bebd)
 
 ---
 
