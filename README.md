@@ -66,6 +66,10 @@ Implemented GameService as a Singleton instance to create & provide services for
 
 Used State Machine to manage the chest states (Locked, Unlocking, Queued, Unlocked, Collected).
 
+**Object Pooling**:
+
+Implemented Object pools for Chests & Chest Undo Options to resuse objects.
+
 **Command Pattern**:
 
 Used to encapsulate the Unlocking With Gem action as a command in a command object in registry for Undo Option.
@@ -79,17 +83,17 @@ Used for chest & audio data to allow designers to make adjustments through inspe
 
 ## How to Play
 
-- Click the Generate Chest button to add a random chest to an empty slot.
-- Click on a locked chest and select Start Timer in the pop-up.
-- Click on a locked or unlocking chest and select Unlock with Gems in the pop-up.
-- Click on a locked chest to queue for unlocking in the pop-up if another chest is already unlocking with active timer.
-- If Gems are used for unlocking, then the amount spent will be removed from gems player owns.
-- Tap on an unlocked chest to collect the rewards.
-- If player doen't have sufficient gems to unlock, a pop-up will appear to notify the player.
-- If all slots are full, a pop-up will appear to notify the player.
-- If Gems were used to unlock a chest & the rewards have not been collected then that action can be undone.
-- Click on the Undo Option button to see the list of chests that have been unlocked with gems but rewards have not been colected.
-- Cick on Undo Button of the chest from the list to get the gem refund and lock that chest again.
+1. Tap "Generate Chest" button to add a random chest to an empty slot.
+2. Tap a locked chest and select "Start Timer" in the pop-up.
+3. Tap a locked or unlocking chest and select "Unlock with Gems" in the pop-up.
+4. Queue a locked chest for unlocking if another chest is already unlocking.
+5. Unlocking with Gems removes the amount spent from the player's gem balance.
+6. Tap an unlocked chest to collect rewards.
+7. A pop-up will notify if there are insufficient gems to unlock.
+8. A pop-up will notify if all slots are full.
+9. If Gems were used and rewards aren't collected, the action can be undone.
+10. Tap "Undo Option" button to see unlocked chests with uncollected rewards.
+11. Tap "Undo" Button on a chest Option to refund gems and lock the chest again.
   
 ---
 
@@ -107,5 +111,5 @@ https://outscal.com/iamdeep75/game/play-chest-system-v10-game
 
 ## Gameplay Video
 
-https://www.loom.com/share/630c9d15873c4b1f931824c7e974fac3?sid=79e44936-4bf5-492d-a9b4-9eb4ecd1152e
+https://youtu.be/5rW9gTa50fg
 
